@@ -1,0 +1,20 @@
+sdSprint:
+  sprint_scrumdog_alpha:
+    name: Alpha
+    description:  |
+      This sprint should result in a usable prototype.
+    product_id: product_scrumdog
+    start_date: 2008-12-21
+    end_date: 2008-04-01
+    scrum_start_time: 08:00:00
+    scrum_time_zone_name: America/Los_Angeles
+
+  sprint_scrumdog_beta:
+    name: Beta
+    description:  |
+      This sprint should get the product to a functioning, usable state.
+    product_id: product_scrumdog
+    start_date: 2008-04-01
+    end_date: 2008-06-01
+    scrum_start_time: 08:00:00
+    scrum_time_zone_name: America/Los_Angeles

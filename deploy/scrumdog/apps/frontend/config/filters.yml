@@ -1,0 +1,15 @@
+rendering: ~
+
+# insert your own filters here
+
+remember:
+  class: rememberFilter
+
+security: ~
+
+request:
+  class: requestFilter
+
+cache:     ~
+common:    ~
+execution: ~

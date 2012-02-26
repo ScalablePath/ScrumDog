@@ -1,0 +1,1 @@
+{"status": "success", "id": "<?php echo $message->getId(); ?>"}

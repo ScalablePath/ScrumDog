@@ -1,0 +1,50 @@
+dev:
+  doctrine:
+    param:
+      dsn: 'mysql:host=localhost;dbname=fluide_devscrum'
+      username:   fluide_devscru
+      password:   agile111
+  session:
+    class:      sfPDODatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=fluide_devscrum'
+      username:   fluide_devscru
+      password:   agile111
+
+
+stage:
+  doctrine:
+    param:
+      dsn: 'mysql:host=localhost;dbname=fluide_stagescrum'
+      username:   fluide_stagesc
+      password:   agile222
+  session:
+    class:      sfPDODatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=fluide_stagescrum'
+      username:   fluide_stagesc
+      password:   agile222
+
+prod:
+  doctrine:
+    param:
+      dsn: 'mysql:host=localhost;dbname=fluide_scrumdog'
+      username:   fluide_scrumdog
+      password:   agile888
+  session:
+    class:      sfPDODatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=fluide_scrumdog'
+      username:   fluide_scrumdog
+      password:   agile888
+
+test:
+  doctrine:
+    param:
+      dsn: 'mysql:host=localhost;dbname=fluide_devscrum'
+      username:   fluide_devscru
+      password:   agile111
+
+all:
+  doctrine:
+    class: sfDoctrineDatabase

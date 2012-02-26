@@ -1,0 +1,12 @@
+sdProductUser:
+  scrumdog_damien:
+    product_id: product_scrumdog
+    user_id: user_damien
+    role: 1
+    send_email: 0
+
+  scrumdog_damien1:
+    product_id: product_scrumdog
+    user_id: user_damien1
+    role: 2
+    send_email: 1

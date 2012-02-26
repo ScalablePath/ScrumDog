@@ -1,0 +1,258 @@
+SdConfirmation:
+  actAs: { Timestampable: ~ }
+  columns:
+    type: {type: string(32), notnull: true}
+    foreign_id: {type: integer(4)}
+    hash: {type: string(32), notnull: true}
+    attributes: {type: string(2147483647)}
+
+SdFile:
+  actAs: 
+    Timestampable:
+      created: {disabled: true}
+      updated: {disabled: true}
+  columns:
+    id: {type: integer(4), autoincrement: true, primary: true}
+    filename: {type: string(255), notnull: true}
+
+SdTaskFile:
+  columns:
+    task_id: {type: integer(4), notnull: true}
+    file_id: {type: integer(4), notnull: true}
+  relations:
+    Task: {class: SdTask, local: task_id, foreign: id, type: one, foreignType: many, foreignAlias: TaskFiles}
+    File: {class: SdFile, local: file_id, foreign: id, type: one, foreignType: one, foreignAlias: TaskFile}
+
+SdInvitation:
+  actAs: { Timestampable: ~ }
+  columns:
+    inviter_user_id: integer(4)
+    hash: {type: string(32), notnull: true}
+    invitee_user_id: integer(4)
+    invitee_email: string(255)
+    project_id: {type: integer(4), notnull: true}
+    status: {type: integer(4), notnull: true}
+  relations:
+    Inviter: {class: SdUser, local: inviter_user_id, foreign: id, type: one, foreignType: many, foreignAlias: InvitationsSent}
+    Invitee: {class: SdUser, local: invitee_user_id, foreign: id, type: one, foreignType: many, foreignAlias: InvitationsReceived}
+    Project: {class: SdProject, local: project_id, foreign: id, type: one, foreignType: many, foreignAlias: InvitationProject}
+
+SdProject:
+  actAs: { Timestampable: ~ }
+  columns:
+    id: {type: integer(4), autoincrement: true, primary: true}
+    name: {type: string(255), notnull: true}
+    description: string(2147483647)
+  relations:
+    Users: {class: SdUser, foreignAlias: Projects, refClass: SdProjectUser, local: project_id, foreign: user_id}
+
+SdProjectUser:
+  actAs: { Timestampable: ~ }
+  columns:
+    project_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    role: {type: integer(4), notnull: true}
+    send_email: {type: integer(4), notnull: true, default: '1'}
+  relations:
+    Project: {class: SdProject, local: project_id, foreign: id, type: one, foreignType: many, foreignAlias: ProjectUsers}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: ProjectUsers}
+
+SdQuestion:
+  actAs: { Timestampable: ~ }
+  columns:
+    id: {type: integer(4), autoincrement: true, primary: true}
+    project_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    work: {type: string(2147483647)}
+    obstacles: {type: string(2147483647)}
+    date: date(25)
+    hours: float(2147483647)
+  relations:
+    Project: {class: SdProject, local: project_id, foreign: id, type: one, foreignType: many, foreignAlias: Questions}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: Questions}
+
+SdTaskHours:
+  actAs: { Timestampable: ~ }
+  columns:
+    date: {type: date(25), notnull: true}
+    time: {type: string(10)}
+    user_id: {type: integer(4), notnull: true}
+    task_id: {type: integer(4), notnull: true}
+    project_id: {type: integer(4), notnull: true}
+    hours: {type: float(2147483647), notnull: true}
+    notes: {type: string(2147483647)}
+  relations:
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: TaskHours}
+    Task: {class: SdTask, local: task_id, foreign: id, type: one, foreignType: many, foreignAlias: TaskHours}
+
+SdQuestionHistory:
+  actAs: 
+    Timestampable:
+      updated: {disabled: true}
+  columns:
+    question_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    change_type: {type: string(30), notnull: true}
+    previous_value: string(2147483647)
+    new_value: string(2147483647)
+    previous_id: integer(4)
+    new_id: integer(4)
+  relations:
+    Question: {class: SdQuestion, local: question_id, foreign: id, type: one, foreignType: many, foreignAlias: QuestionHistories}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: QuestionHistories}
+
+SdSprint:
+  actAs: { Timestampable: ~ }
+  columns:
+    id: {type: integer(4), autoincrement: true, primary: true}
+    project_id: {type: integer(4), notnull: true}
+    name: {type: string(255), notnull: true}
+    start_date: {type: date(25), notnull: true}
+    end_date: {type: date(25), notnull: true}
+    scrum_start_time: {type: time(25)}
+    scrum_time_zone_name: {type: string(255)}
+    scrum_days: {type: string(13), default: '1,2,3,4,5', notnull: true}
+    active: {type: integer(1), default: '1'}
+    current: {type: integer(1), default: '0'}
+    description: string(2147483647)
+    scrum_day_0: integer(1)
+    scrum_day_1: integer(1)
+    scrum_day_2: integer(1)
+    scrum_day_3: integer(1)
+    scrum_day_4: integer(1)
+    scrum_day_5: integer(1)
+    scrum_day_6: integer(1)
+  relations:
+    Project: {class: SdProject, local: project_id, foreign: id, type: one, foreignType: many, foreignAlias: Sprints}
+
+SdTask:
+  actAs: { Timestampable: ~ }
+  columns:
+    id: {type: integer(4), autoincrement: true, primary: true}
+    project_id: {type: integer(4), notnull: true}
+    creator_user_id: {type: integer(4), notnull: true}
+    parent_id: {type: integer(4)}
+    name: {type: string(255), notnull: true}
+    status: {type: integer(4), default: '0', notnull: true}
+    business_value: {type: integer(4), default: '1', notnull: true}
+    development_effort: {type: integer(4), default: '1', notnull: true}
+    priority: {type: integer(4), default: '1', notnull: true}
+    invested_hours: {type: float(2147483647), default: '0'}
+    sprint_id: integer(4)
+    user_id: integer(4)
+    description: string(2147483647)
+    estimated_hours: float
+    is_archived: {type: integer(1), default: 0}
+    date_confirmed: date(25)
+  relations:
+    Project: {class: SdProject, local: project_id, foreign: id, type: one, foreignType: many, foreignAlias: Tasks}
+    Sprint: {class: SdSprint, local: sprint_id, foreign: id, type: one, foreignType: many, foreignAlias: Tasks}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: Tasks}
+    Creator: {class: SdUser, local: creator_user_id, foreign: id, type: one, foreignType: many, foreignAlias: TasksCreated}
+    ParentTask: {class: SdTask, local: parent_id, foreign: id, type: one, foreignType: many, foreignAlias: Children}
+
+SdTaskComment:
+  actAs: { Timestampable: ~ }
+  columns:
+    task_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    comment: string(2147483647)
+  relations:
+    Task: {class: SdTask, local: task_id, foreign: id, type: one, foreignType: many, foreignAlias: Comments}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: Comments}
+
+SdTaskHistory:
+  actAs: 
+    Timestampable:
+      updated: {disabled: true}
+  columns:
+    task_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    change_type: {type: string(30), notnull: true}
+    previous_value: {type: string(2147483647)}
+    new_value: {type: string(2147483647)}
+    previous_id: integer(4)
+    new_id: integer(4)
+  relations:
+    Task: {class: SdTask, local: task_id, foreign: id, type: one, foreignType: many, foreignAlias: TaskHistories}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: TaskHistories}
+
+SdUser:
+  actAs: { Timestampable: ~ }
+  columns:
+    id: {type: integer(4), autoincrement: true, primary: true}
+    username: {type: string(128), notnull: true}
+    password: {type: string(128), notnull: true}
+    is_active: {type: integer(1), default: '0'}
+    email: {type: string(255), notnull: true}
+    full_name: {type: string(255), notnull: true}
+    remember_key: string(10)
+    city: string(50)
+    state: string(50)
+    country: string(50)
+    phone: string(50)
+    time_zone: {type: string(50), default: 'America/Los_Angeles', notnull: true}
+    time_zone_offset: {type: integer(4), default: -7, notnull: true}
+    gender: string(6)
+    is_public: integer(1)
+    profile_image: integer(4)
+    last_login: { type: timestamp, notnull: true }
+  relations:
+    Projects: {class: SdProject, foreignAlias: Users, refClass: SdProjectUser, local: user_id, foreign: project_id}
+    ProfileImage: {class: SdFile, local: profile_image, foreign: id, type: one, foreignType: one, foreignAlias: User}
+
+SdSession:
+  tableName: sd_session
+  columns:
+    id:                   { type: string(255), primary: true }
+    time:                 { type: integer(4), unsigned: 1, notnull: true }
+    data:                 { type: string(2147483647) }
+
+SdMessage:
+  actAs: { Timestampable: ~ }
+  columns:
+    id: {type: integer(4), autoincrement: true, primary: true}
+    project_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    title: {type: string(255), notnull: true}
+    #sprint_id: integer(4)
+    content: string(2147483647)
+    is_archived: integer(1)
+  relations:
+    Project: {class: SdProject, local: project_id, foreign: id, type: one, foreignType: many, foreignAlias: Messages}
+    #Sprint: {class: SdSprint, local: sprint_id, foreign: id, type: one, foreignType: many, foreignAlias: Messages}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: Messages}
+
+SdMessageComment:
+  actAs: { Timestampable: ~ }
+  columns:
+    message_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    comment: string(2147483647)
+  relations:
+    Message: {class: SdMessage, local: message_id, foreign: id, type: one, foreignType: many, foreignAlias: Comments}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: MessageComments}
+    
+SdMessageFile:
+  columns:
+    message_id: {type: integer(4), notnull: true}
+    file_id: {type: integer(4), notnull: true}
+  relations:
+    Message: {class: SdMessage, local: message_id, foreign: id, type: one, foreignType: many, foreignAlias: Files}
+    File: {class: SdFile, local: file_id, foreign: id, type: one, foreignType: one, foreignAlias: MessageFile}
+
+SdMessageHistory:
+  actAs: 
+    Timestampable:
+      updated: {disabled: true}
+  columns:
+    message_id: {type: integer(4), notnull: true}
+    user_id: {type: integer(4), notnull: true}
+    change_type: {type: string(30), notnull: true}
+    previous_value: {type: string(2147483647)}
+    new_value: {type: string(2147483647)}
+    previous_id: integer(4)
+    new_id: integer(4)
+  relations:
+    Message: {class: SdMessage, local: message_id, foreign: id, type: one, foreignType: many, foreignAlias: MessageHistories}
+    User: {class: SdUser, local: user_id, foreign: id, type: one, foreignType: many, foreignAlias: MessageHistories}

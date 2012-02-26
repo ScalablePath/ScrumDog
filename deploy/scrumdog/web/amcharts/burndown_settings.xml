@@ -1,0 +1,59 @@
+<settings>
+  <redraw>1</redraw>
+  <decimals_separator>.</decimals_separator>
+  <digits_after_decimal>2</digits_after_decimal>
+  <grid>
+    <x>
+      <dashed>1</dashed>
+      <approx_count>14</approx_count>
+    </x>
+    <y_left>
+      <dashed>1</dashed>
+      <approx_count>20</approx_count>
+    </y_left>
+  </grid>
+  <balloon>
+    <text_size>13</text_size>
+    <border_color>000000</border_color>
+    <border_alpha>100</border_alpha>
+  </balloon>
+  <legend>
+    <values>
+      <text>: {value}</text>
+    </values>
+  </legend>
+  <strings>
+    <DD>ﾠ</DD>
+  </strings>
+  <graphs>
+    <graph gid="1">
+      <title>Actual Task Completion</title>
+      <color>FFCC00</color>
+      <line_width>5</line_width>
+      <balloon_text>{value}</balloon_text>
+    </graph>
+    <graph gid="2">
+      <title>Ideal Velocity</title>
+      <color>999999</color>
+      <line_width>5</line_width>
+	  <line_alpha>50</line_alpha>
+      <selected>0</selected>
+      <balloon_text>${value}</balloon_text>
+    </graph>
+  </graphs>
+  <labels>
+    <label lid="0">
+      <text>Remaining Task Hours</text>
+      <y>70%</y>
+      <text_color>000000</text_color>
+      <text_size>15</text_size>
+      <rotate>1</rotate>
+    </label>
+    <label lid="1">
+      <text>Sprint Days</text>
+      <x>50%</x>
+      <y>!45</y>
+      <text_size>15</text_size>
+    </label>
+  </labels>
+</settings>
