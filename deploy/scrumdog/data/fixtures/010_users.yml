@@ -1,0 +1,48 @@
+sdUser:
+  user_damien:
+    username: damien
+    password: agile8
+    email: damien626@gmail.com
+    full_name: Damien Filiatrault
+    city: San Francisco
+    state: California
+    country: United States
+    phone: (415) 609-0375
+    is_active: 1
+    last_login: '2009-10-31 00:00:00'
+ 
+  user_damien1:
+    username: damien1
+    password: agile8
+    email: damien626+1@gmail.com
+    full_name: Damien Filiatrault 1
+    city: San Francisco
+    state: California
+    country: United States
+    phone: (415) 609-0375
+    is_active: 1
+    last_login: '2009-10-31 00:00:00'
+
+  user_damien2:
+    username: damien2
+    password: agile8
+    email: damien626+2@gmail.com
+    full_name: Damien Filiatrault 2
+    city: San Francisco
+    state: California
+    country: United States
+    phone: (415) 609-0375
+    is_active: 1
+    last_login: '2009-10-31 00:00:00'
+
+  user_damien3:
+    username: damien3
+    password: agile8
+    email: damien626+3@gmail.com
+    full_name: Damien Filiatrault 3
+    city: San Francisco
+    state: California
+    country: United States
+    phone: (415) 609-0375
+    is_active: 1
+    last_login: '2009-10-31 00:00:00'

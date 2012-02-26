@@ -1,0 +1,1 @@
+{"status": "<?php echo $status ?>", "id": "<?php echo $task->getId(); ?>", "message": "<?php echo str_replace('"', '\"', $sf_data->getRaw('message')) ?>"}

@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ScrumDog : nyroModal Demo</title>
+	<script type="text/javascript" src="/js/jquery/jquery-1.3.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery/jquery-ui-personalized-1.6rc6.min.js"></script>
+	<script type="text/javascript" src="/js/jquery/plugins/nyroModal/jquery.nyroModal-1.5.0.js"></script>
+	<script type="text/javascript" src="/js/jquery/plugins/tooltip/jquery.tooltip.js"></script>
+	<script type="text/javascript" src="http://www.dillerdesign.com/experiment/DD_roundies/DD_roundies_0.0.2a-min.js"></script>
+    
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/js/jquery/theme/ui.all.css" />
+	<script type="text/javascript">
+	//<![CDATA[
+	// Demo NyroModal
+	$(function() {
+		$.nyroModalSettings({
+			debug: true,
+			processHandler: function(settings) {
+				var url = settings.url;
+				if (url && url.indexOf('http://www.youtube.com/watch?v=') == 0) {
+					$.nyroModalSettings({
+						type: 'swf',
+						height: 355,
+						width: 425,
+						url: url.replace(new RegExp("watch\\?v=", "i"), 'v/')
+					});
+				}
+			},
+			endShowContent: function(elts, settings) {
+				$('.resizeLink', elts.contentWrapper).click(function(e) {
+					e.preventDefault();
+					$.nyroModalSettings({
+						width: Math.random()*1000,
+						height: Math.random()*1000
+					});
+					return false;
+				});
+				$('.bgLink', elts.contentWrapper).click(function(e) {
+					e.preventDefault();
+					$.nyroModalSettings({
+						bgColor: '#'+parseInt(255*Math.random()).toString(16)+parseInt(255*Math.random()).toString(16)+parseInt(255*Math.random()).toString(16)
+					});
+					return false;
+				});
+			}
+		});
+		
+		$('#manual').click(function(e) {
+			e.preventDefault();
+			var content = 'Content wrote in JavaScript<br />';
+			jQuery.each(jQuery.browser, function(i, val) {
+				content+= i + " : " + val+'<br />';
+			});
+			$.fn.nyroModalManual({
+				bgColor: '#3333cc',
+				content: content
+			});
+			return false;
+		});
+		$('#manual2').click(function(e) {
+			e.preventDefault();
+			$('#imgFiche').nyroModalManual({
+				bgColor: '#cc3333'
+			});
+			return false;
+		});
+		$('#myValidForm').submit(function(e) {
+			e.preventDefault();
+			if ($("#myValidForm :text").val() != '') {
+				$('#myValidForm').nyroModalManual();
+			} else {
+				alert("Enter a value before going to " + $('#myValidForm').attr("action"));
+			}
+			return false;
+		});
+		$('#block').nyroModal({
+			'blocker': '#blocker'
+		});
+		
+		function preloadImg(image) {
+			var img = new Image();
+			img.src = image;
+		}
+		
+		preloadImg('/images/nyroModal/ajaxLoader.gif');
+		preloadImg('/images/nyroModal/prev.gif');
+		preloadImg('/images/nyroModal/next.gif');
+		
+	});
+	
+	// Page enhancement
+	$(function() {
+		var allPre = $('pre');
+		allPre.each(function() {
+			var pre = $(this);
+			var link = $('<a href="#" class="showCode">Show Code</a>');
+			pre.hide().before(link).before('<br />');
+			link.click(function(event) {
+					event.preventDefault();
+					pre.slideToggle('fast');
+					return false;
+				});
+		});
+		var shown = false;
+		$('#showAllCodes').click(function(event) {
+			event.preventDefault();
+			if (shown)
+				allPre.slideUp('fast');
+			else
+				allPre.slideDown('fast');
+			shown = !shown;
+			return false;
+		});
+	});
+	
+	//]]>
+	</script>
+	<style type="text/css">
+		#blocker {
+			width: 300px;
+			height: 300px;
+			background: red;
+			padding: 30px;
+			border: 5px solid green;
+		}
+	</style>
+
+</head>
+<body>
+<div id="container" class="product-scope">
+	<div id="header">
+		<p class="metanav">
+			<a href="/" class="meta-left">Home</a>
+			<a href="/logout">logout</a> &bull; <a href="/member/ryanbrill">profile</a>
+		</p>
+		<div id="header_signin">
+			<form action="/login" method="post">
+				<div class="item">
+					<div class="field">
+						<input type="checkbox" name="user[remember]" id="user_remember" /> <label for="user_remember">remember me</label>
+						<a href="/forgot_password">forgot login info</a>
+					</div>
+				</div>
+				<div class="item">
+					<div class="field">
+						<input type="text" name="user[username]" id="user_username" />
+						<input type="password" name="user[password]" id="user_password" />
+						<input type="hidden" name="user[_csrf_token]" value="e96dbe063bc9002c78e918aeb14de016" id="user__csrf_token" />
+						<input type="submit" value="sign in" />
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<h1 id="product_title">HTML</h1>
+		<ul id="mainnav" class="clearfix">
+			<li class="active"><a href="/project/6" title="Project"><span>Project</span></a></li>
+			<li><a href="/project/6/create-sprint" title="Create Sprint"><span>Create Sprint</span></a></li>
+			<li id="mainnav-account"><a href="/member/dashboard/ryanbrill" title="Account"><span>Account</span></a></li>
+		</ul>
+		<ul id="subnav">
+			<li class="active"><a href="/project/6" title="Dashboard">Dashboard</a></li>
+			<li><a href="/project/6/members" title="Team Members">Team Members</a></li>
+			<li><a href="/project/6/create-sprint" title="Create Sprint">Create Sprint</a></li>
+			<li><a href="/project/6/create-task" title="Create Task">Create Task</a></li>
+			<li><a href="/project/6/manage" title="Manage Project">Manage Project</a></li>
+		</ul>
+	</div>
+	<div id="page">
+		<h1 class="page-heading">NryoModal Demo</h1>
+		<div id="content">
+			<div id="main">
+				<h2>Project Backlog</h2>
+				
+				<div class="box">
+<a href="#" id="showAllCodes" class="showCode">Show All Codes</a><br />
+<p>
+	<a href="/html/nyroModalDemoSent.php" class="nyroModal">Ajax</a><br />
+	<a href="/html/nyroModalDemoSent.php#test" class="nyroModal">Ajax Filtering Content #test</a><br />
+	<a href="/html/nyroModalDemoSent.php#blabla" class="nyroModal">Ajax Filtering Content #blabla</a>
+</p>
+<pre>
+&lt;a href="/html/nyroModalDemoSent.php" class="nyroModal">Ajax&lt;/a>
+&lt;a href="/html/nyroModalDemoSent.php#test" class="nyroModal">Ajax Filtering Content #test&lt;/a>
+&lt;a href="/html/nyroModalDemoSent.php#blabla" class="nyroModal">Ajax Filtering Content #blabla&lt;/a>
+</pre>
+<p><a href="/html/nyroModalDemoSent.php" class="nyroModal" rev="modal">Ajax without closing</a></p>
+<pre>&lt;a href="/html/nyroModalDemoSent.php" class="nyroModal" rev="modal">Ajax without closing&lt;/a></pre>
+
+<p><a href="http://nyromodal.nyrodev.com/img/img2.jpg" class="nyroModal" title="3rd Street Promenade">Image</a></p>
+<pre>&lt;a href="http://nyromodal.nyrodev.com/img/img2.jpg" class="nyroModal" title="3rd Street Promenade">Image&lt;/a></pre>
+	
+<p>
+	<a href="http://nyromodal.nyrodev.com/img/img1.jpg" id="imgFiche" class="nyroModal" title="UCLA" rel="gal">Gallery Img 1</a><br />
+	<a href="http://nyromodal.nyrodev.com/img/img2.jpg" class="nyroModal" title="3rd Street Promenade by Night" rel="gal">Gallery Img 2</a><br />
+	<a href="http://nyromodal.nyrodev.com/img/img3.jpg" class="nyroModal" title="Sunset at Santa Monica" rel="gal">Gallery Img 3</a>
+</p>
+<pre>
+&lt;a href="http://nyromodal.nyrodev.com/img/img1.jpg" id="imgFiche" class="nyroModal" title="UCLA" rel="gal">Gallery Img 1&lt;/a>
+&lt;a href="http://nyromodal.nyrodev.com/img/img2.jpg" class="nyroModal" title="3rd Street Promenade by Night" rel="gal">Gallery Img 2&lt;/a>
+&lt;a href="http://nyromodal.nyrodev.com/img/img3.jpg" class="nyroModal" title="Sunset at Santa Monica" rel="gal">Gallery Img 3&lt;/a>
+</pre>
+
+<p><a href="#test" class="nyroModal">DOM Element (hidden div)</a></p>
+<div id="test" style="display: none; width: 600px;">
+	<a href="/html/nyroModalDemoSent.php" class="nyroModal">Open a new modal</a><br />
+	Test
+</div>
+<pre>
+&lt;a href="#test" class="nyroModal">DOM Element (hidden div)&lt;/a>
+&lt;div id="test" style="display: none; width: 600px;">
+  &lt;a href="/html/nyroModalDemoSent.php" class="nyroModal">Open a new modal&lt;/a>&lt;br />
+  Test
+&lt;/div>
+</pre>
+
+<p><a href="http://www.youtube.com/watch?v=lddUnv1R5y0" class="nyroModal">Youtube Via Process Handler</a></p>
+<pre>
+&lt;script type="text/javascript">
+$(function() {
+  $.fn.nyroModal.settings.processHandler = function(settings) {
+    var from = settings.from;
+    if (from &amp;&amp; from.href &amp;&amp; from.href.indexOf('http://www.youtube.com/watch?v=') == 0) {
+      $.nyroModalSettings({
+        type: 'swf',
+        height: 355,
+        width: 425,
+        url: from.href.replace(new RegExp("watch\\?v=", "i"), 'v/')
+      });
+    }
+  };
+});
+&lt;/script>
+&lt;a href="http://www.youtube.com/watch?v=lddUnv1R5y0" class="nyroModal">Youtube Via Process Handler&lt;/a>
+</pre>
+
+<p>
+	<a id="manual" href="#">Manual Call</a><br />
+	<a id="manual2" href="#">Manual Call calling through an other link</a>
+	<form id="myValidForm" method="post" action="/html/nyroModalDemoSent.php">
+		<input type="text" name="wouhou" />
+		<input type="submit" value="simple form with validation" />
+	</form>
+</p>
+<pre>
+&lt;script type="text/javascript">
+$(function() {
+  $('#manual').click(function(e) {
+    e.preventDefault();
+    var content = 'Content wrote in JavaScript&lt;br />';
+    jQuery.each(jQuery.browser, function(i, val) {
+      content+= i + " : " + val+'&lt;br />';
+    });
+    $.fn.nyroModalManual({
+      bgColor: '#3333cc',
+      content: content
+    });
+    return false;
+  });
+  $('#manual2').click(function(e) {
+    e.preventDefault();
+    $('#imgFiche').nyroModalManual({
+      bgColor: '#cc3333'
+    });
+    return false;
+  });
+  $('#myValidForm').submit(function(e) {
+    e.preventDefault();
+    if ($("#myValidForm :text").val() != '') {
+      $('#myValidForm').nyroModalManual();
+    } else {
+      alert("Enter a value before going to " + $('#myValidForm').attr("action"));
+    }
+    return false;
+  });
+});
+&lt;/script>
+&lt;a id="manual" href="#">Manual Call&lt;/a>
+&lt;a id="manual2" href="#">Manual Call calling through an other link&lt;/a>
+&lt;form id="myValidForm" method="post" action="/html/nyroModalDemoSent.php">
+  &lt;input type="text" name="wouhou" />
+  &lt;input type="submit" value="simple form with validation" />
+&lt;/form>
+</pre>
+
+<p>
+	<a href="http://www.perdu.com/" class="nyroModal">Automatic Iframe via other hostname</a><br />
+	<a href="demoIframe.php" target="_blank" class="nyroModal">Automatic Iframe via target=_blank</a>
+</p>
+<pre>
+&lt;a href="http://www.perdu.com/" class="nyroModal">Iframe Automatique via other hostname&lt;/a>
+&lt;a href="/html/nyroModalDemoSent.php" target="_blank" class="nyroModal">Iframe Automatique via target=_blank&lt;/a>
+</pre>
+
+<p>
+	<form method="post" action="/html/nyroModalDemoSent.php" class="nyroModal">
+		<input type="text" name="wouhou" />
+		<input type="submit" value="simple form"/>
+	</form>
+	<form method="post" action="/html/nyroModalDemoSent.php" class="nyroModal" target="_blank">
+		<input type="text" name="wouhou" />
+		<input type="submit" value="simple form in iframe"/>
+	</form>
+	<form method="post" action="/html/nyroModalDemoSent.php#test" class="nyroModal">
+		<input type="text" name="wouhou" />
+		<input type="submit" value="simple form Filtering Content"/>
+	</form>
+</p>
+<pre>
+&lt;form method="post" action="/html/nyroModalDemoSent.php" class="nyroModal">
+  &lt;input type="text" name="wouhou" />
+  &lt;input type="submit" value="simple form"/>
+&lt;/form>
+&lt;form method="post" action="/html/nyroModalDemoSent.php" class="nyroModal" target="_blank">
+  &lt;input type="text" name="wouhou" />
+  &lt;input type="submit" value="simple form in iframe"/>
+&lt;/form>
+&lt;form method="post" action="/html/nyroModalDemoSent.php#test" class="nyroModal">
+  &lt;input type="text" name="wouhou" />
+  &lt;input type="submit" value="simple form Filtering Content"/>
+&lt;/form>
+</pre>
+
+<p>
+	<form method="post" enctype="multipart/form-data" action="/html/nyroModalDemoSent.php" class="nyroModal">
+		<input type="file" name="file" />
+		<input type="submit" value="form with file"/>
+	</form>
+	<form method="post" enctype="multipart/form-data" action="/html/nyroModalDemoSent.php#blabla" class="nyroModal">
+		<input type="file" name="file" />
+		<input type="submit" value="form with file Filtering Content"/>
+	</form>
+</p>
+<pre>
+&lt;form method="post" enctype="multipart/form-data" action="/html/nyroModalDemoSent.php" class="nyroModal">
+  &lt;input type="file" name="file" />
+  &lt;input type="submit" value="form with file"/>
+&lt;/form>
+&lt;form method="post" enctype="multipart/form-data" action="/html/nyroModalDemoSent.php#blabla" class="nyroModal">
+  &lt;input type="file" name="file" />
+  &lt;input type="submit" value="form with file Filtering Content"/>
+&lt;/form>
+</pre>
+
+<p>
+	<div id="blocker"></div>
+	<a href="/html/nyroModalDemoSent.php" id="block">blocker Modal</a><br />
+</p>
+<pre>
+&lt;div id="blocker">&lt;/div>
+&lt;a href="/html/nyroModalDemoSent.php" id="block">blocker Modal&lt;/a>
+&lt;script type="text/javascript">
+$(function() {
+  $('#block').nyroModal({
+    'blocker': '#blocker'
+  });
+});
+</pre>
+
+<p>
+	<a href="invalidUrl.php" class="nyroModal">Non existent URL</a><br />
+	<a href="invalidUrl.jpg" class="nyroModal">Non existent Image</a><br />
+	<a href="#inexistent" class="nyroModal">Non existent Element ID</a><br />
+	<a href="/html/nyroModalDemoSent.php#inexistent" class="nyroModal">Non existent Element ID in Ajax Request</a>
+</p>
+<pre>
+&lt;a href="invalidUrl.php" class="nyroModal">Non existent URL&lt;/a>&lt;br />
+&lt;a href="invalidUrl.jpg" class="nyroModal">Non existent Image&lt;/a>&lt;br />
+&lt;a href="#inexistent" class="nyroModal">Non existent Element ID&lt;/a>&lt;br />
+&lt;a href="/html/nyroModalDemoSent.php#inexistent" class="nyroModal">Non existent Element ID in Ajax Request&lt;/a>
+</pre>
+
+<p>Preloading Images is not considered to be a part of the plugin, as you probably need to preload other images for your website.<br />
+If you need to do so, you can use this code:</p>
+<pre>
+&lt;script type="text/javascript">
+$(function() {
+  function preloadImg(image) {
+    var img = new Image();
+    img.src = image;
+  }
+
+  preloadImg('img/ajaxLoader.gif');
+  preloadImg('img/prev.gif');
+  preloadImg('img/next.gif');
+});
+&lt;/script>
+</pre>
+				</div>
+				
+			</div>
+			<div id="sidebar">
+				<div class="box grey">
+					<h2>My Projects (<a href="/project/create">create new</a>)</h2>
+					<ul>
+						<li><a href="/project/1">ScrumDog Development</a></li>
+						<li><a href="/project/2">ScrumDog Front-End Audit</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<span class="copyright">ScrumDog &copy; 2009</span>
+		<p class="metanav">
+			<a href="/">home</a> &bull; <a href="/about">about</a> &bull; <a href="/terms">terms</a> &bull; <a href="/privacy">privacy</a> &bull; <a href="/help">help</a>
+		</p>
+	</div>
+</div>
+</body>
+</html>

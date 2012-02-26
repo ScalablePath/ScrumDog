@@ -1,0 +1,38 @@
+#!/usr/bin/expect -f
+# MUST BE IN THE admin_scripts FOLDER WHEN YOU EXECUTE THIS SCRIPT
+# set Variables
+set server scrumdog.com
+set username fluide
+set password KingsCanyon2009!
+set myport 7822
+set timeout -1
+
+#execute
+spawn ssh -oPort=$myport $username@$server
+expect "*?assword:*"
+send -- "$password\r"
+send -- "cd /home/fluide/www/prod.scrumdog/admin_scripts/prod\r"
+send -- "./files.dump.sh\r"
+expect "*Files dump complete.*"
+send -- "exit\r"
+
+spawn ftp $username@$server
+expect "*?assword:*"
+send -- "$password\r"
+send -- "cd backup\r"
+send -- "get uploads.tar.gz\r"
+expect "*ftp>*"
+send -- "exit\r"
+
+expect "*Damiens-MacBook-Pro:*"
+spawn bash
+send -- "cd /Library/WebServer/Documents/local.scrumdog.com\r"
+send -- "mv admin_scripts/uploads.tar.gz uploads.tar.gz\r"
+send -- "gunzip uploads.tar.gz\r"
+send -- "rm -rf uploads\r"
+send -- "tar xf uploads.tar\r"
+expect "*bash*"
+send -- "rm uploads.tar\r"
+send -- "exit\r"
+
+expect eof

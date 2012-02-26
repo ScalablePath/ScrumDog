@@ -1,0 +1,17 @@
+register:
+  is_secure: off
+
+registerThankYou:
+  is_secure: off
+
+registerBadInvitationKey:
+  is_secure: off
+
+activate:
+  is_secure: off
+
+resendActivation:
+  is_secure: off
+
+default:
+  is_secure: on

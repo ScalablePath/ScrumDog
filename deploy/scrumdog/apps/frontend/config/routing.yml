@@ -1,0 +1,288 @@
+# default rules 
+homepage:
+  url:   /
+  param: { module: default, action: index, nav_scope: main }
+
+project_autocomplete:
+  url:   /project/autocomplete
+  param: { module: project, action: autocomplete }
+
+user_signin:
+  url:   /login
+  param: { module: auth, action: signin, nav_scope: main }
+ 
+user_signout:
+  url:   /logout
+  param: { module: auth, action: signout, nav_scope: main }
+ 
+user_password:
+  url:   /forgot-password
+  param: { module: auth, action: forgotPassword, nav_scope: main }
+
+user_register:
+  url:   /register
+  param: { module: user, action: register, nav_scope: main }
+
+user_register_thankyou:
+  url:   /register/thank-you
+  param: { module: user, action: registerThankYou, nav_scope: main }
+  
+user_register_key:
+  url:   /register/:key
+  param: { module: user, action: register, nav_scope: main }
+
+user_activate:
+  url:   /activate/:key
+  param: { module: user, action: activate, nav_scope: main }
+
+user_resendactivation:
+  url:   /resend-activation
+  param: { module: user, action: resendActivation, nav_scope: main }
+
+member_editprofile:
+  url:   /edit-profile
+  param: { module: user, action: editProfile, nav_scope: member }
+
+member_dashboard:
+  url:   /member/dashboard
+  param: { module: user, action: dashboard, nav_scope: member }
+
+member_backlogbody:
+  url:   /member/backlog-body
+  param: { module: user, action: backlogBody}
+
+member_profile:
+  url:   /member/:username
+  param: { module: user, action: profile, nav_scope: member }
+
+member_delete_profileimage:
+  url:   /delete/:id
+  param: { module: user, action: deleteProfileImage, nav_scope: member }
+
+member_passwordchange:
+  url:   /change-password
+  param: { module: user, action: changePassword, nav_scope: member }
+
+member_createproject:
+  url:   /project/create
+  param: { module: project, action: create, nav_scope: member }
+
+member_invitemembers:
+  url:   /invite
+  param: { module: default, action: inviteMembers, nav_scope: member }
+  
+member_hours:
+  url:   /hours
+  param: { module: user, action: hours, nav_scope: member }
+
+project_dashboard:
+  url:   /project/:project_id
+  param: { module: project, action: dashboard, nav_scope: project }
+
+project_backlogbody:
+  url:   /project/:project_id/backlog-body
+  param: { module: project, action: backlogBody}
+
+project_archivebody:
+  url:   /project/:project_id/archive-body
+  param: { module: project, action: archiveBody}
+
+project_searchtablebody:
+  url:   /project/:project_id/search-table-body
+  param: { module: question, action: searchTableBody}
+
+project_calendar:
+  url:   /project/:project_id/calendar/:username/month/:month/selected-day/:selected_day
+  param: { module: question, action: calendar}
+
+project_members:
+  url:   /project/:project_id/members
+  param: { module: project, action: members, nav_scope: project }
+  
+project_addmembers:
+  url:   /project/:project_id/add-members
+  param: { module: project, action: addmembers, nav_scope: project }
+
+project_removemember:
+  url:   /project/:project_id/remove-member/:project_user_id
+  param: { module: project, action: removeMember, nav_scope: project }
+  
+project_removeinvitation:
+  url:   /project/:project_id/remove-invitation/:invitation_id
+  param: { module: project, action: removeInvitation, nav_scope: project }
+
+project_confirmuser:
+  url:   /project/:project_id/confirm-user/:key
+  param: { module: project, action: confirmUser, nav_scope: project }
+
+project_confirmjoin:
+  url:   /project/confirm-join/:project_id
+  param: { module: project, action: confirmSimpleUser, nav_scope: project }
+
+project_requestjoin:
+  url:   /project/:project_id/request-join
+  param: { module: project, action: requestJoin, nav_scope: project }
+
+project_acceptmember:
+  url:   /project/:project_id/accept-member/:invitation_id
+  param: { module: project, action: acceptMember, nav_scope: project }
+
+project_createsprint:
+  url:   /project/:project_id/create-sprint
+  param: { module: sprint, action: create, nav_scope: project }
+
+project_createtask:
+  url:   /project/:project_id/create-task
+  param: { module: task, action: create, nav_scope: project }
+
+project_task:
+  url:   /task/:task_id
+  param: { module: task, action: view, nav_scope: project }
+
+project_manage:
+  url:   /project/:project_id/manage
+  param: { module: project, action: manage, nav_scope: project }
+
+project_archive:
+  url:   /project/:project_id/archive
+  param: { module: project, action: archive, nav_scope: project }
+
+project_questions:
+  url:   /project/:project_id/questions/:username/:date
+  param: { module: question, action: index, nav_scope: project }
+
+project_questionsave:
+  url:   /project/:project_id/questions-save/:username/:date
+  param: { module: question, action: save}
+  
+project_work:
+  url:   /project/:project_id/work
+  param: { module: question, action: work, nav_scope: project }
+  
+project_messages:
+  url:   /project/:project_id/messages
+  param: { module: message, action: index, nav_scope: project}
+  
+project_message_create:
+  url:   /project/:project_id/create-message
+  param: { module: message, action: create, nav_scope: project}
+  
+project_message_view:
+  url:   /message/:message_id
+  param: { module: message, action: view, nav_scope: project}
+  
+message_file_upload:
+  url:   /message/:message_id/file-upload
+  param: { module: message, action: fileUpload}
+  
+message_ajax_file_delete:
+  url:   /message-ajax-file-delete/:message_id/:messagefile_id
+  param: { module: message, action: ajaxFileDelete}
+  
+message_ajax_save:
+  url:   /message-ajax-save
+  param: { module: message, action: ajaxSave}
+  
+message_ajax_comment_save:
+  url:   /message-ajax-comment-save/:message_id
+  param: { module: message, action: ajaxCommentSave}
+  
+message_file_list:
+  url:   /message/:message_id/file-list
+  param: { module: message, action: fileList}
+  
+message_history:
+  url:   /message/:message_id/history
+  param: { module: message, action: history}
+
+task_ajax_save:
+  url:   /task-ajax-save
+  param: { module: task, action: ajaxSave}
+  
+task_ajax_create:
+  url:   /task-ajax-create
+  param: { module: task, action: ajaxCreate}
+
+task_file_upload:
+  url:   /task/:task_id/file-upload
+  param: { module: task, action: fileUpload}
+
+task_file_list:
+  url:   /task/:task_id/file-list
+  param: { module: task, action: fileList}
+  
+task_ajax_file_delete:
+  url:   /task-ajax-file-delete/:task_id/:taskfile_id
+  param: { module: task, action: ajaxFileDelete}
+  
+task_history:
+  url:   /task/:task_id/history
+  param: { module: task, action: history}
+  
+task_subtasks:
+  url:   /task/:task_id/subtask-body
+  param: { module: task, action: subtaskBody}
+
+task_ajax_comment_save:
+  url:   /task-ajax-comment-save/:task_id
+  param: { module: task, action: ajaxCommentSave}
+  
+task_create_dialog_backlog:
+  url:   /create-dialog/project-backlog/:project_id
+  param: { module: task, action: createDialog, dialogmode: backlog}
+  
+task_create_dialog_sprint:
+  url:   /create-dialog/sprint-backlog/:sprint_id
+  param: { module: task, action: createDialog, dialogmode: sprint}
+  
+task_create_dialog_task:
+  url:   /create-dialog/task/:task_id
+  param: { module: task, action: createDialog, dialogmode: task}
+
+sprint_dashboard:
+  url:   /sprint/:sprint_id
+  param: { module: sprint, action: dashboard, nav_scope: project }
+
+sprint_createtask:
+  url:   /sprint/:sprint_id/create-task
+  param: { module: task, action: create, nav_scope: project }
+
+sprint_backlogbody:
+  url:   /sprint/:sprint_id/backlog-body
+  param: { module: sprint, action: backlogBody}
+
+sprint_manage:
+  url:   /sprint/:sprint_id/manage
+  param: { module: sprint, action: manage, nav_scope: project }
+
+sprint_burndown:
+  url:   /sprint/:sprint_id/burndown
+  param: { module: sprint, action: burndown, nav_scope: project }
+
+sprint_burndown-data:
+  url:   /sprint/:sprint_id/burndown-data
+  param: { module: sprint, action: burndownData, nav_scope: project }
+
+about:
+  url:   /about
+  param: { module: about, action: index, nav_scope: main }
+
+how_it_works:
+  url:   /how-it-works
+  param: { module: about, action: howItWorks, nav_scope: main }
+
+terms:
+  url:   /terms
+  param: { module: terms, action: index, nav_scope: main }
+
+privacy:
+  url:   /privacy
+  param: { module: privacy, action: index, nav_scope: main }
+
+help:
+  url:   /faq
+  param: { module: help, action: index, nav_scope: main }
+
+error:
+  url: /*
+  param: { module: error, action: index, nav_scope: main }

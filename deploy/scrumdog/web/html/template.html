@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ScrumDog : HTML Template</title>
+	<script type="text/javascript" src="/js/jquery/jquery-1.3.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery/jquery-ui-personalized-1.6rc6.min.js"></script>
+	<script type="text/javascript" src="/js/jquery/plugins/numeric/jquery.numeric.pack.js"></script>
+	<script type="text/javascript" src="/js/Backlog.js"></script>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/js/jquery/theme/ui.all.css" />
+</head>
+<body>
+<div id="container" class="product-scope">
+	<div id="header">
+		<p class="metanav">
+			<a href="/" class="meta-left">Home</a>
+			<a href="/logout">logout</a> &bull; <a href="/member/ryanbrill">profile</a>
+		</p>
+		<div id="header_signin">
+			<form action="/login" method="post">
+				<div class="item">
+					<div class="field">
+						<input type="checkbox" name="user[remember]" id="user_remember" /> <label for="user_remember">remember me</label>
+						<a href="/forgot_password">forgot login info</a>
+					</div>
+				</div>
+				<div class="item">
+					<div class="field">
+						<input type="text" name="user[username]" id="user_username" />
+						<input type="password" name="user[password]" id="user_password" />
+						<input type="hidden" name="user[_csrf_token]" value="e96dbe063bc9002c78e918aeb14de016" id="user__csrf_token" />
+						<input type="submit" value="sign in" />
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<h1 id="product_title">HTML</h1>
+		<ul id="mainnav" class="clearfix">
+			<li class="active"><a href="/project/6" title="Project"><span>Project</span></a></li>
+			<li><a href="/project/6/create-sprint" title="Create Sprint"><span>Create Sprint</span></a></li>
+			<li id="mainnav-account"><a href="/member/dashboard/ryanbrill" title="Account"><span>Account</span></a></li>
+		</ul>
+		<ul id="subnav">
+			<li class="active"><a href="/project/6" title="Dashboard">Dashboard</a></li>
+			<li><a href="/project/6/members" title="Team Members">Team Members</a></li>
+			<li><a href="/project/6/create-sprint" title="Create Sprint">Create Sprint</a></li>
+			<li><a href="/project/6/create-task" title="Create Task">Create Task</a></li>
+			<li><a href="/project/6/manage" title="Manage Project">Manage Project</a></li>
+		</ul>
+	</div>
+	<div id="page">
+		<h1 class="page-heading">Project Dashboard</h1>
+		<div id="content">
+			<div id="main">
+				<h2>Project Backlog</h2>
+				
+				<div class="box form">
+					<h2>Task</h2>
+					<form method="post" action="/project/1/create-task">
+						<fieldset>
+							<div class="item">
+								<label for="task_name">Name <span class="required">*</span></label>
+								<div class="field">
+									<input type="text" id="task_name" name="task[name]"/>
+								</div>
+							</div>
+							<div class="item">
+								<label for="task_description">Description</label>
+								<div class="field">
+									<textarea id="task_description" name="task[description]" class="large" cols="30" rows="4"></textarea>
+								</div>
+							</div>
+							<div class="item">
+								<label for="task_business_value">Business Value</label>
+								<div class="field">
+									<select id="task_business_value" name="task[business_value]">
+										<option value="0">Low</option>
+										<option selected="selected" value="1">Normal</option>
+										<option value="2">High</option>
+									</select>
+								</div>
+							</div>
+							<div class="item">
+								<label for="task_priority">Priority</label>
+								<div class="field">
+									<select id="task_priority" name="task[priority]">
+										<option value="0">Low</option>
+										<option selected="selected" value="1">Normal</option>
+										<option value="2">High</option>
+									</select>
+								</div>
+							</div>
+							<div class="item">
+								<label for="task_estimated_hours">Estimated Hours</label>
+								<div class="field">
+									<input type="text" id="task_estimated_hours" name="task[estimated_hours]" class="numeric"/>
+								</div>
+							</div>
+							<div class="item">
+								<label for="task_user_id">Assigned to</label>
+								<div class="field">
+									<select id="task_user_id" name="task[user_id]">
+										<option selected="selected" value="">-unassigned-</option>
+										<option value="1">Damien Filiatrault</option>
+										<option value="3">piyush kotak</option>
+										<option value="4">Ryan Brill</option>
+									</select>
+								</div>
+							</div>
+							<div class="item">
+								<label for="task_sprint_id">Sprint</label>
+								<div class="field">
+									<select id="task_sprint_id" name="task[sprint_id]">
+										<option selected="selected" value="">-unassigned-</option>
+										<option value="2">April</option>
+										<option value="3">May</option>
+									</select></div>
+							</div>
+							<div class="item">
+								<label for="task_status">Status</label>
+								<div class="field">
+									<select id="task_status" name="task[status]">
+										<option selected="selected" value="0">Open</option>
+										<option value="1">In Progress</option>
+										<option value="2">Completed</option>
+										<option value="3">Closed</option>
+									</select>
+									<input type="hidden" id="task__csrf_token" value="d44ca2d15b00d2f41d36ceeda6e7bcbb" name="task[_csrf_token]"/>
+								</div>
+							</div>
+							<div class="item">
+								<div class="field">
+									<input type="submit" value="Create"/>
+								</div>
+							</div>
+							<p class="required">Fields marked with * are required.</p>
+						</fieldset>
+					</form>
+				</div>
+				
+				<div class="box taskDetail">
+					<h2>Alter color scheme to look less like Beanstalk</h2>
+					<form id="task_form" action="">
+						<input id="id_input" name="task[id]" type="hidden" value="3" />
+						<table>
+							<tbody>
+								<tr>
+									<td width="150">
+										<em>Title:</em><br />
+										<span id="name_edit" class="edit_button task_name">edit</span>
+										<span id="name_save" class="save_button hide task_name">save</span>
+										<span id="name_cancel" class="cancel_button hide task_name">cancel</span>
+									</td>
+									<td>
+										<p id="name_paragraph" class="task_name">Alter color scheme to look less like Beanstalk</p>
+										<input autocomplete="off" id="name_input" name="task[name]" class="hide task_name" value="Alter color scheme to look less like Beanstalk" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<em>Description:</em><br />
+										<span id="description_edit" class="edit_button task_description">edit</span>
+										<span id="description_save" class="save_button hide task_description">save</span>
+										<span id="description_cancel" class="cancel_button hide task_description">cancel</span>
+									</td>
+									<td>
+										<p id="description_paragraph" class="task_description">I am primarily interested in changing the background colors just a little bit.  I did all of the colors, so a general look at all of the colors on the site would be good.</p>
+										<textarea autocomplete="off" id="description_textarea" name="task[description]" class="hide task_description">I am primarily interested in changing the background colors just a little bit.  I did all of the colors, so a general look at all of the colors on the site would be good.</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<em>Business Value:</em><br />
+										<span id="bv_edit" class="edit_button task_bv">edit</span>
+										<span id="bv_save" class="save_button hide task_bv">save</span>
+										<span id="bv_cancel" class="cancel_button hide task_bv">cancel</span>
+									</td>
+									<td>
+										<p id="bv_paragraph" class="task_bv">Normal</p>
+										<select id="bv_select" name="task[business_value]" class="hide task_bv">
+											<option value="0">Low</option>
+											<option selected="selected" value="1">Normal</option>
+											<option value="2">High</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<em>Priority:</em><br />
+										<span id="pri_edit" class="edit_button task_pri">edit</span>
+										<span id="pri_save" class="save_button hide task_pri">save</span>
+										<span id="pri_cancel" class="cancel_button hide task_pri">cancel</span>
+									</td>
+									<td>
+										<p id="pri_paragraph" class="task_pri">High</p>
+										<select id="pri_select" name="task[priority]" class="hide task_pri">
+											<option value="0">Low</option>
+											<option value="1">Normal</option>
+											<option selected="selected" value="2">High</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td width="100">
+										<em>Estimated Hours:</em><br />
+										<span id="eh_edit" class="edit_button task_eh">edit</span>
+										<span id="eh_save" class="save_button hide task_eh">save</span>
+										<span id="eh_cancel" class="cancel_button hide task_eh">cancel</span>
+									</td>
+									<td>
+										<p id="eh_paragraph" class="task_eh">3</p>
+										<input autocomplete="off" id="eh_input" name="task[estimated_hours]" class="hide task_eh numeric" value="3" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<em>Assigned to:</em><br />
+										<span id="user_edit" class="edit_button task_user">edit</span>
+										<span id="user_save" class="save_button hide task_user">save</span>
+										<span id="user_cancel" class="cancel_button hide task_user">cancel</span>
+									</td>
+									<td>
+										<p id="user_paragraph" class="task_user">Ryan Brill</p>
+										<select id="user_select" name="task[priority]" class="hide task_user">
+											<option value="">-unassigned-</option>
+											<option value="1">Damien Filiatrault</option>
+											<option value="3">piyush kotak</option>
+											<option selected="selected" value="4">Ryan Brill</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<em>Status:</em><br />
+										<span id="status_edit" class="edit_button task_status">edit</span>
+										<span id="status_save" class="save_button hide task_status">save</span>
+										<span id="status_cancel" class="cancel_button hide task_status">cancel</span>
+									</td>
+									<td>
+										<p id="status_paragraph" class="task_status">Open</p>
+										<select id="status_select" name="task[status]" class="hide task_status">
+											<option selected="selected" value="0">Open</option>
+											<option value="1">In Progress</option>
+											<option value="2">Completed</option>
+											<option value="3">Closed</option>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				
+				<div class="box">
+					<h2>Task History</h2>
+					<table>
+						<tr>
+							<th width="15%">User</th>
+							<th width="15%">Field</th>
+							<th width="35%">Old Value</th>
+							<th width="35%">New Value</th>
+						</tr>
+						<tr>
+							<td width="15%">Ryan Brill</td>
+							<td width="15%">description</td>
+							<td width="35%">I am primarily interested in changing the background colors just a little bit.  I did all of the colors, so a general look at all of the colors on the site would be good.</td>
+							<td width="35%">I am primarily interested in changing the background colors just a little bit.  I did all of the colors, so a general look at all of the colors on the site would be good.
+					
+							* Different from Beanstalk
+							* Consistency
+							* No clashing colors</td>
+						</tr>	
+						<tr>
+							<td width="15%">Damien Filiatrault</td>
+							<td width="15%">priority</td>
+							<td width="35%">Normal</td>
+							<td width="35%">High</td>
+						</tr>	
+						<tr>
+							<td width="15%">Damien Filiatrault</td>
+							<td width="15%">status</td>
+							<td width="35%">Open</td>
+							<td width="35%">Open</td>
+						</tr>	
+					</table>
+				</div>
+				
+			</div>
+			<div id="sidebar">
+				<div class="box grey">
+					<h2>My Projects (<a href="/project/create">create new</a>)</h2>
+					<ul>
+						<li><a href="/project/1">ScrumDog Development</a></li>
+						<li><a href="/project/2">ScrumDog Front-End Audit</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<span class="copyright">ScrumDog &copy; 2009</span>
+		<p class="metanav">
+			<a href="/">home</a> &bull; <a href="/about">about</a> &bull; <a href="/terms">terms</a> &bull; <a href="/privacy">privacy</a> &bull; <a href="/help">help</a>
+		</p>
+	</div>
+</div>
+</body>
+</html>

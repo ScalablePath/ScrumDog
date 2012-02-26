@@ -1,0 +1,21 @@
+    # Be sure to only have this line once in your configuration
+    NameVirtualHost 127.0.0.1:80
+
+    # This is the configuration for scrumdog
+    Listen 127.0.0.1:80
+
+    <VirtualHost 127.0.0.1:80>
+      ServerName scrumdog.localhost
+      DocumentRoot "/var/www/vhosts/scrumdog.com/scrumdog/web"
+      DirectoryIndex index.php
+      <Directory "/var/www/vhosts/scrumdog.com/scrumdog/web">
+        AllowOverride All
+        Allow from All
+      </Directory>
+
+      Alias /sf "/var/www/vhosts/scrumdog.com/symfony/data/web/sf"
+      <Directory "/var/www/vhosts/scrumdog.com/symfony/data/web/sf">
+        AllowOverride All
+        Allow from All
+      </Directory>
+    </VirtualHost>
