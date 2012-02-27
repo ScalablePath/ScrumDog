@@ -17,10 +17,7 @@
 After the beta period, ScrumDog will charge a monthly fee based on the number of projects and team members you need.
 Don't worry, we realize the importance of providing value to our customers and will always be priced competitively.</p>
 -->
-<p>Have questions? Don't hesitate to email us at
-<script type="text/javascript">
-	var name = 'info'; var domain = 'scrumdog.com'; document.write('<a class="more" href="mailto:'+name+'@'+domain+'?subject=Privacy Policy">'+name+'@'+domain+'</a>');
-</script>.</p>
+<p>Have questions? Don't hesitate to email us at <?php echo Fluide_Symfony_Util::emailLink(sfConfig::get('app_info_email')) ?>.</p>
 <br />
 </div>
 <div id="sidebar">
