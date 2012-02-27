@@ -1,6 +1,6 @@
 <?php
 
-$domainArrayReversed = array_reverse(split('\.', $_SERVER['SERVER_NAME']));
+$domainArrayReversed = array_reverse(explode('.', $_SERVER['SERVER_NAME']));
 $subdomain = isset($domainArrayReversed[2]) ? $domainArrayReversed[2] : '';
 $second_subdomain = isset($domainArrayReversed[3]) ? $domainArrayReversed[3] : '';
 
@@ -9,16 +9,17 @@ $debug = false;
 switch($subdomain)
 {
     case 'local':
-    case 'dev':
+    case 'scrum-dev':
         $env = 'dev';
         $debug = true;
 		break;
-	case 'stage':
+	case 'scrum-stage':
 		$env = 'stage';
 		break;
-    case 'www':
+    case 'scrumdog':
 	default:
-		$env = 'prod';
+		$env = 'dev';
+		$debug = true;
 }
 
 require_once(dirname(__FILE__).'/../config/ProjectConfiguration.class.php');

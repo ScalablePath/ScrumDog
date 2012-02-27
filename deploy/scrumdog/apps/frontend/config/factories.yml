@@ -29,16 +29,16 @@ all:
     param:
       generate_shortest_url:            true
       extra_parameters_as_query_string: true
-  storage:
-#    class: sfMySQLSessionStorage
-    class: sfPDOSessionStorage
-    param:
-      session_name: scrumdog
-      database:    session            # Name of the database connection to use
-      db_table:    sd_session              # Name of the table storing the sessions
-      db_id_col:   id              # Name of the column storing the session id
-      db_data_col: data            # Name of the column storing the session data
-      db_time_col: time            # Name of the column storing the session timestamp
+#  storage:
+##    class: sfMySQLSessionStorage
+#    class: sfPDOSessionStorage
+#    param:
+#      session_name: scrumdog
+#      database:    session            # Name of the database connection to use
+#     db_table:    sd_session              # Name of the table storing the sessions
+#      db_id_col:   id              # Name of the column storing the session id
+#     db_data_col: data            # Name of the column storing the session data
+#      db_time_col: time            # Name of the column storing the session timestamp
 
 #  storage:
 #    class: MySessionStorage
