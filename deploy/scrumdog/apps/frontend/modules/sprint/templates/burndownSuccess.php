@@ -1,5 +1,5 @@
 <?php slot('page_title') ?>Burndown Chart<?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 
 <div id="main">
 	<h2>Burndown Chart</h2>

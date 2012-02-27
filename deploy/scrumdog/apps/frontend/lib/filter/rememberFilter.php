@@ -1,4 +1,4 @@
-<?
+<?php
 class rememberFilter extends sfFilter
 {
 	public function execute ($filterChain)

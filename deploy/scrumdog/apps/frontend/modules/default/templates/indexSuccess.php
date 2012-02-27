@@ -24,10 +24,10 @@ Don't worry, we realize the importance of providing value to our customers and w
 <br />
 </div>
 <div id="sidebar">
-<? if($isAuthenticated): ?>
+<?php if($isAuthenticated): ?>
   <?php include_component('user', 'projects') ?>
   <?php include_component('default', 'inviteMembers') ?>
-<? else: ?>
+<?php else: ?>
 	<?php include_component('auth', 'register'); ?>
-<? endif; ?>
+<?php endif; ?>
 </div>

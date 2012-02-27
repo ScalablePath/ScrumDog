@@ -3,7 +3,7 @@
 <h1>Register</h1>
 <div class="box form">
 	<h2>Not a member yet? Sign up now!</h2>
-	<form action="<? echo url_for('@user_register') ?>" method="POST">
+	<form action="<?php echo url_for('@user_register') ?>" method="POST">
 		
 		<div class="item">
 			<label></label>

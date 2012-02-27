@@ -9,8 +9,8 @@
 		<?php echo link_to('Delete profile image', '@member_delete_profileimage?id='.$profileImageFile->getId()); ?>
 		<?php endif ?>	
 	<p class="required">Fields marked with * are required.</p>
-	<form action="<? echo url_for('@member_editprofile') ?>" method="POST" enctype="multipart/form-data">
-		<? echo($form); ?>
+	<form action="<?php echo url_for('@member_editprofile') ?>" method="POST" enctype="multipart/form-data">
+		<?php echo($form); ?>
 		<div class="item">
 			<div class="field">
 				<input type="submit" value="Submit"/>
@@ -24,7 +24,7 @@
 	<h2>Tips</h2>
 	<ul>
 		<li>Select the proper time zone so that you get your reminder emails in the morning (your time).</li>
-		<li>View your <a href="<? echo url_for('@member_profile?username='.$user['username']) ?>">public profile</a> to see what others see.</li>
+		<li>View your <a href="<?php echo url_for('@member_profile?username='.$user['username']) ?>">public profile</a> to see what others see.</li>
 	</ul>
   </div>
 </div>

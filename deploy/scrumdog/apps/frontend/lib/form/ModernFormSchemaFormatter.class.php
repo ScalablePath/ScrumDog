@@ -1,4 +1,4 @@
-<?
+<?php
 class ModernFormSchemaFormatter extends sfWidgetFormSchemaFormatter
 {
   protected $rowFormat = "<div class=\"item\">\n%label%\n<div class=\"field\">%error%%field%%help%%hidden_fields%</div>\n</div>\n";

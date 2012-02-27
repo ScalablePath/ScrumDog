@@ -1,4 +1,4 @@
-<?
+<?php
 class sprintComponents extends sfComponents
 {
 

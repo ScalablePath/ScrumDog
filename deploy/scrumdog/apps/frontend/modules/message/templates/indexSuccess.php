@@ -1,5 +1,5 @@
-<?php slot('page_title') ?><? echo($project->getName()); ?> : Messages<?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('page_title') ?><?php echo($project->getName()); ?> : Messages<?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 	<h1>Message Board</h1>
 	<?php if(count($messages)>0): ?>

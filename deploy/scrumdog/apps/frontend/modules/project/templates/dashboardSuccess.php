@@ -1,5 +1,5 @@
-<?php slot('page_title') ?><? echo($project->getName()); ?> : Project Dashboard<?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('page_title') ?><?php echo($project->getName()); ?> : Project Dashboard<?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
   	<div class="box">
   	<span id="create-task-button" class="button floatright">Create Task</span>
@@ -16,18 +16,18 @@
 				<span id="sort-bv">Business Value</span><br />
 			<select id="filter-bv" name="filter[business_value]" autocomplete="off">
 					<option value="">Any</option>
-					<? foreach(SdTaskTable::$businessValueArr as $k => $v):	?>
+					<?php foreach(SdTaskTable::$businessValueArr as $k => $v):	?>
 						<option <?php if($filters['business_value']==(string)$k):?>selected="selected" <?php endif;?>value="<?=$k;?>"><?=$v;?></option>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</select>
 			</th>
 			<th class="sortable<?php if(isset($sort['estimated_hours'])) echo(' '.$sort['estimated_hours']); ?>">
 				<span id="sort-eh">Estimated Hours</span><br />
 				<select id="filter-eh" name="filter[estimated_hours]" autocomplete="off">
 					<option value="">Any</option>
-					<? foreach(SdTaskTable::$hoursRangeArr as $k => $v):	?>
+					<?php foreach(SdTaskTable::$hoursRangeArr as $k => $v):	?>
 						<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?=$v;?>"><?=$v;?></option>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</select>
 			</th>
 			<th class="actions">
@@ -45,14 +45,14 @@
 		<?php if($hasActiveSprints): ?>
 		<form autocomplete="off">
 			<select id="assign_select">
-				<? foreach($activeSprints as $sprint): ?>
+				<?php foreach($activeSprints as $sprint): ?>
 					<option value="<?=$sprint->getId()?>"<?php if($sprint->current==1): ?> selected="selected"<?php endif; ?>><?=$sprint->getName()?></option>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</select>
 		</form>
 		<p>Note: Any subtasks will also be moved along with this task.</p>
 		<?php else: ?>
-		<p>You must <a href="<? echo(url_for('@project_createsprint?project_id='.$project_id)); ?>">create a sprint</a> before you can move a task.</p>
+		<p>You must <a href="<?php echo(url_for('@project_createsprint?project_id='.$project_id)); ?>">create a sprint</a> before you can move a task.</p>
 		<?php endif; ?>
 	</div>
 	

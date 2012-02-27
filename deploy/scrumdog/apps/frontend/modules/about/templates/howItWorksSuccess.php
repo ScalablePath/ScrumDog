@@ -13,17 +13,17 @@
 	<p>Tasks are where most of the activity happens.
 	A task is assigned to one member of the team at a time, but the entire team can collaborate on a task by sharing files, 
 	making comments, and forwarding the task to other team members.</p>
-	<? if(!$isAuthenticated): ?>
+	<?php if(!$isAuthenticated): ?>
 	<h2>So what are you waiting for? <a href="<?php echo url_for('@user_register'); ?>">Sign up now!</a></h2>
-	<? endif; ?>
+	<?php endif; ?>
 <p>Have questions? Don't hesitate to email us at <?php echo Fluide_Symfony_Util::emailLink(sfConfig::get('app_info_email')) ?>.</p>
 <br />
 </div>
 <div id="sidebar">
-<? if($isAuthenticated): ?>
+<?php if($isAuthenticated): ?>
   <?php include_component('user', 'projects') ?>
   <?php include_component('default', 'inviteMembers') ?>
-<? else: ?>
+<?php else: ?>
 	<?php include_component('auth', 'register'); ?>
-<? endif;  ?>
+<?php endif;  ?>
 </div>

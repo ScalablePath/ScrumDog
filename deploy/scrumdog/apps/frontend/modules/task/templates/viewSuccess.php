@@ -1,5 +1,5 @@
 <?php slot('page_title') ?>Task : <?=$task->getName()?><?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 <div class="box task-detail">
 <form id="task_form" autocomplete="off" action="">
@@ -36,9 +36,9 @@
 			</div>
 			<div class="field hide pri-task">
 				<select id="bv_select" name="task[business_value]">
-				<? foreach(SdTaskTable::$businessValueArr as $k => $v): ?>
-					<option <? if($task->getBusinessValue()==$k):?> selected="selected" <? endif; ?>value="<?=$k;?>"><?=$v;?></option>
-				<? endforeach; ?>
+				<?php foreach(SdTaskTable::$businessValueArr as $k => $v): ?>
+					<option <?php if($task->getBusinessValue()==$k):?> selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+				<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
@@ -49,9 +49,9 @@
 			</div>
 			<div class="field hide pri-task">
 				<select id="pri_select" name="task[priority]">
-				<? foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-					<option <? if($task->getPriority()==$k):?>selected="selected" <? endif; ?>value="<?=$k;?>"><?=$v;?></option>
-				<? endforeach; ?>
+				<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
+					<option <?php if($task->getPriority()==$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+				<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
@@ -78,9 +78,9 @@
 			<div class="field hide pri-task">
 				<select id="user_select" name="task[user_id]">
 					<option value="">-unassigned-</option>
-				<? foreach($projectUsers as $k => $v): ?>
-					<option <? if($task->getUserId()==$k):?>selected="selected" <? endif; ?>value="<?=$k?>"><?=$v->getFullName()?></option>
-				<? endforeach; ?>
+				<?php foreach($projectUsers as $k => $v): ?>
+					<option <?php if($task->getUserId()==$k):?>selected="selected" <?php endif; ?>value="<?=$k?>"><?=$v->getFullName()?></option>
+				<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
@@ -91,9 +91,9 @@
 			</div>
 			<div class="field hide pri-task">
 				<select id="status_select" name="task[status]">
-				<? foreach(SdTaskTable::$statusArr as $k => $v): ?>
-					<option <? if($task->getStatus()==$k):?>selected="selected" <? endif; ?>value="<?=$k;?>"><?=$v;?></option>
-				<? endforeach; ?>
+				<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
+					<option <?php if($task->getStatus()==$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+				<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
@@ -111,9 +111,9 @@
 			<div class="field hide pri-task">
 				<select id="pt_select" name="task[parent_id]">
 					<option value="">-none-</option>
-					<? foreach($sf_data->getRaw('parentTasks') as $parentTask): ?>
+					<?php foreach($sf_data->getRaw('parentTasks') as $parentTask): ?>
 						<option <?php if($parentTask->getId()==$task->getParentId()): ?> selected="selected"<?php endif; ?>value="<?php echo($parentTask->getId()) ?>"><?php echo($parentTask->getName().' ('.$parentTask->getId().')') ?></option>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
@@ -184,16 +184,16 @@
 				<?php if(!is_null($task->getSprintId()) || $task->getIsArchived()==1): ?>): ?>
 					<option value="">Project Backlog</option>
 				<?php endif; ?>
-				<? foreach($activeSprints as $mySprint): ?>
+				<?php foreach($activeSprints as $mySprint): ?>
 					<?php if($task->getSprintId()!=$mySprint->getId()): ?>
 					<option value="<?=$mySprint->getId()?>"><?=$mySprint->getName()?></option>
 					<?php endif; ?>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</select>
 		</form>
 		<p>Note: Any subtasks will also be moved along with this task.</p>
 		<?php else: ?>
-		<p>You must <a href="<? echo(url_for('@project_createsprint?project_id='.$project_id)); ?>">create a sprint</a> before you can move a task.</p>
+		<p>You must <a href="<?php echo(url_for('@project_createsprint?project_id='.$project_id)); ?>">create a sprint</a> before you can move a task.</p>
 		<?php endif; ?>
 	</div>
 	

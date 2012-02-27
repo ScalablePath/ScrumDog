@@ -1,5 +1,5 @@
-<?php slot('page_title') ?><? echo($project->getName()); ?> : Work Summary<?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('page_title') ?><?php echo($project->getName()); ?> : Work Summary<?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
   	<div class="box">
   		<?php if($rowCount>0): ?><a class="floatright" href="<?php echo($csvLink) ?>"><span class="button">Export</span></a><?php endif; ?>

@@ -1,11 +1,11 @@
 <?php slot('page_title') ?>Manage Sprint<?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 	<h1>Manage Sprint</h1>
 	<div class="box form">
 	<p class="required">Fields marked with * are required.</p>
-	<form action="<? echo url_for('@sprint_manage?sprint_id='.$sprint_id) ?>" method="POST">
-	  <? echo($form); ?>
+	<form action="<?php echo url_for('@sprint_manage?sprint_id='.$sprint_id) ?>" method="POST">
+	  <?php echo($form); ?>
 		<div class="item">
 			<div class="field">
 				<input type="hidden" name="redirect" value="<?=$redirectUrl?>"/>
@@ -18,7 +18,7 @@
 <div id="sidebar">
   <div class="box grey">
 	<h2>Note</h2>
-	<p>Reminder emails are sent to team members on sprint work days by default.  The project owner can control who receives reminder emails on the project <a href="<? echo url_for('@project_members?project_id='.$project_id) ?>">team members</a> page.</p>
+	<p>Reminder emails are sent to team members on sprint work days by default.  The project owner can control who receives reminder emails on the project <a href="<?php echo url_for('@project_members?project_id='.$project_id) ?>">team members</a> page.</p>
   </div>
 </div>
 <script type="text/javascript">

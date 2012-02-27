@@ -1,4 +1,4 @@
-<?
+<?php
 class projectComponents extends sfComponents
 {
   public function executeAddMembers()

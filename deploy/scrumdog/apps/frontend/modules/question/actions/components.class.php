@@ -1,4 +1,4 @@
-<?
+<?php
 class questionComponents extends sfComponents
 {
 	public function executeCalendar(sfWebRequest $request)

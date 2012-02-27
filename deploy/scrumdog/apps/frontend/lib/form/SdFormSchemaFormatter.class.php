@@ -1,4 +1,4 @@
-<?
+<?php
 class SdFormSchemaFormatter extends sfWidgetFormSchemaFormatter
 {
   protected $rowFormat = "<tr>\n <td><nobr>%label%</nobr>\n</td><td>%error%%field%%help%%hidden_fields%</td>\n</tr>\n";

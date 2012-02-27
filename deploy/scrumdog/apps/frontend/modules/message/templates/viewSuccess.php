@@ -1,5 +1,5 @@
 <?php slot('page_title') ?>Message : <?=$message->getTitle()?><?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 <div class="box message-detail">
 <form id="message_form" autocomplete="off" action="">

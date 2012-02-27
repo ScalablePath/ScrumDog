@@ -1,4 +1,4 @@
-<?
+<?php
 class userComponents extends sfComponents
 {
   public function executeHeaderSignin()

@@ -46,10 +46,10 @@ To protect your privacy and security, we will also take reasonable steps to veri
 <br />
 </div>
 <div id="sidebar">
-<? if($isAuthenticated): ?>
+<?php if($isAuthenticated): ?>
   <?php include_component('user', 'projects') ?>
   <?php include_component('default', 'inviteMembers') ?>
-<? else: ?>
+<?php else: ?>
 	<?php include_component('auth', 'register'); ?>
-<? endif; ?>
+<?php endif; ?>
 </div>

@@ -1,7 +1,7 @@
 <div class="box form">
 <h2>Invite people to ScrumDog</h2>
-<form action="<? echo url_for('@member_invitemembers') ?>" method="POST">
-    <? echo($form); ?>
+<form action="<?php echo url_for('@member_invitemembers') ?>" method="POST">
+    <?php echo($form); ?>
     
     <?php if ($sf_params->has('project_id')): ?>
     <div class="item">

@@ -49,22 +49,22 @@
 		</p>
 <!--
         <div id="logo">
-          <a href="<? echo url_for('@homepage') ?>"><img id="logo" src="/images/logo.gif" alt="ScrumDog" /></a>
+          <a href="<?php echo url_for('@homepage') ?>"><img id="logo" src="/images/logo.gif" alt="ScrumDog" /></a>
         </div>
 -->
         <?php if (has_slot('project_title')): ?>
           <span id="project_title"><?php include_slot('project_title') ?></span>
         <?php else: ?>
           <span id="project_title">ScrumDog <sup>beta</sup></span>
-        <? endif; ?>
-        <? if($navScope=='project'): ?>
+        <?php endif; ?>
+        <?php if($navScope=='project'): ?>
           <?php include_component('default', 'projectNav') ?>
-        <? else: ?>
+        <?php else: ?>
           <?php include_component('default', 'mainNav') ?>          
-        <? endif; ?>
-        <? if(!$sf_user->isAuthenticated()): ?>
+        <?php endif; ?>
+        <?php if(!$sf_user->isAuthenticated()): ?>
           <?php include_component('user', 'headerSignin') ?>
-        <? endif; ?>
+        <?php endif; ?>
 		<?php include_component('default', 'subNav') ?>
       </div>
       <div id="page">

@@ -1,12 +1,12 @@
 <div class="box grey">
-	<h2><? if($for_current_user): ?>My <? endif; ?>Projects
-	<? if($for_current_user): ?>
-	 (<a href="<? echo url_for('@member_createproject'); ?>">create new</a>)
-	<? endif; ?>
+	<h2><?php if($for_current_user): ?>My <?php endif; ?>Projects
+	<?php if($for_current_user): ?>
+	 (<a href="<?php echo url_for('@member_createproject'); ?>">create new</a>)
+	<?php endif; ?>
 	</h2>
 	<ul>
-	<? foreach($projects as $project): ?>
-	  <li><a href="<? echo(url_for('@project_dashboard?project_id='.$project->getId())); ?>"><? echo($project->getName()); ?></a></li>
-	<? endforeach; ?>
+	<?php foreach($projects as $project): ?>
+	  <li><a href="<?php echo(url_for('@project_dashboard?project_id='.$project->getId())); ?>"><?php echo($project->getName()); ?></a></li>
+	<?php endforeach; ?>
 	</ul>
 </div>

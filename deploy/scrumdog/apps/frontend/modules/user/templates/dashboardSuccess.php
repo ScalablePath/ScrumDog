@@ -14,38 +14,38 @@
 						<span id="sort-proj">Project</span><br />
 						<select id="filter-proj" name="filter[project_id]" autocomplete="off">
 							<option value="">Any</option>
-							<? foreach($userProjects as $project): ?>
+							<?php foreach($userProjects as $project): ?>
 								<option <?php if($filters['project_id']==(string)$project->getId()):?>selected="selected" <?php endif; ?>value="<?php echo $project->getId();?>"><?php echo $project->getName();?></option>
-							<? endforeach; ?>
+							<?php endforeach; ?>
 						</select>
 					</th>
 					<th class="sortable<?php if(isset($sort['priority'])) echo(' '.$sort['priority']); ?>">
 						<span id="sort-pri">Priority</span><br />
 						<select id="filter-pri" name="filter[priority]" autocomplete="off">
 							<option value="">Any</option>
-							<? foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-								<option <? if($filters['priority']==(string)$k):?>selected="selected" <? endif; ?>value="<?=$k;?>"><?=$v;?></option>
-							<? endforeach; ?>
+							<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
+								<option <?php if($filters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+							<?php endforeach; ?>
 						</select>
 					</th>
 					<th class="sortable<?php if(isset($sort['status'])) echo(' '.$sort['status']); ?>">
 						<span id="sort-status">Status</span><br />
 						<select id="filter-status" name="filter[status]" autocomplete="off">
 							<option value="">Any</option>
-							<option <? if($filters['status']=='not-completed'):?>selected="selected" <? endif; ?>value="not-completed">Not Completed</option>
-							<option <? if($filters['status']=='not-accepted'):?>selected="selected" <? endif; ?>value="not-accepted">Not Accepted</option>
-							<? foreach(SdTaskTable::$statusArr as $k => $v): ?>
-								<option <? if($filters['status']==(string)$k):?>selected="selected" <? endif; ?>value="<?=$k;?>"><?=$v;?></option>
-							<? endforeach; ?>
+							<option <?php if($filters['status']=='not-completed'):?>selected="selected" <?php endif; ?>value="not-completed">Not Completed</option>
+							<option <?php if($filters['status']=='not-accepted'):?>selected="selected" <?php endif; ?>value="not-accepted">Not Accepted</option>
+							<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
+								<option <?php if($filters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+							<?php endforeach; ?>
 						</select>
 					</th>
 					<th class="sortable<?php if(isset($sort['estimated_hours'])) echo(' '.$sort['estimated_hours']); ?>">
 						<span id="sort-eh">Estimated Hours</span><br />
 						<select id="filter-eh" name="filter[estimated_hours]" autocomplete="off">
 							<option value="">Any</option>
-							<? foreach(SdTaskTable::$hoursRangeArr as $k => $v):	?>
+							<?php foreach(SdTaskTable::$hoursRangeArr as $k => $v):	?>
 								<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?=$v;?>"><?=$v;?></option>
-							<? endforeach; ?>
+							<?php endforeach; ?>
 						</select>
 					</th>
 					<th class="actions">

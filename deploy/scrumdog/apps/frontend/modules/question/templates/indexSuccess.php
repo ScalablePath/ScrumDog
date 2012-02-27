@@ -1,5 +1,5 @@
-<?php slot('page_title') ?><? echo($project->getName()); ?> : Project Questions<?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('page_title') ?><?php echo($project->getName()); ?> : Project Questions<?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 	<h1><a href="<?php echo(url_for('@member_profile?username='.$questionUser->getUsername())); ?>"><?php echo($questionUser->getFullName()); ?></a>'s Daily Questions for <?php echo(date("l M jS", $questionTime)); ?></h1>
 	<div id="question-browse">
@@ -62,17 +62,17 @@
   	<div class="box question">
 		<?php if($isCurrentDay): ?>
 			<h2>What will you accomplish today (<?php echo date("l", $questionTime); ?>)?</h2>
-		<? else: ?>
+		<?php else: ?>
 			<h2>What did you accomplish?</h2>
 		<?php endif; ?>
 		<?php if($isCurrentDay): ?>
 			<h3>Select the tasks you plan to work on.</h3>
-		<? else: ?>
+		<?php else: ?>
 			<h3>Select the tasks you worked on.</h3>
 		<?php endif; ?>
 		<?php if($isCurrentDay): ?>
 			<p>Enter the number of hours you intend to spend on each task.</p>
-		<? else: ?>
+		<?php else: ?>
 			<p>Enter the number of hours you spent on each task.</p>
 		<?php endif; ?>
 		<table>
@@ -90,7 +90,7 @@
 		
 		<?php if($isCurrentDay): ?>
 			<h3>Describe what you will work on today.</h3>
-		<? else: ?>
+		<?php else: ?>
 			<h3>Describe what you worked on.</h3>
 		<?php endif; ?>
 		<p>Include some details that are not explained in the tasks above.</p>
@@ -105,7 +105,7 @@
 		
 		<?php if($isCurrentDay): ?>
 			<h3>What obstacles are in your way?</h3>
-		<? else: ?>
+		<?php else: ?>
 			<h3>What obstacles were in your way?</h3>
 		<?php endif; ?>
 		
@@ -120,7 +120,7 @@
 		<br />
 		<?php if($isCurrentDay): ?>
 			<h3>What is the total number of hours you will work on this project today?</h3>
-		<? else: ?>
+		<?php else: ?>
 			<h3>What is the total number of hours you spent on the project?</h3>
 		<?php endif; ?>
 		
@@ -159,9 +159,9 @@
 			<select id="filter-user" name="filter[user_id]" autocomplete="off">
 					<option value="">Anyone</option>
 					<option <?php if($searchFilters['user_id']=='null'):?>selected="selected" <?php endif;?>value="null">-unassigned-</option>
-					<? foreach($projectUserArray as $k => $v):	?>
+					<?php foreach($projectUserArray as $k => $v):	?>
 						<option <?php if($searchFilters['user_id']==(string)$k):?>selected="selected" <?php endif;?>value="<?=$k;?>"><?=$v;?></option>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</select>
 			</th>
 
@@ -169,9 +169,9 @@
 				<span id="sort-pri">Priority</span><br />
 				<select id="filter-pri" name="filter[priority]" autocomplete="off">
 					<option value="">Any</option>
-					<? foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-						<option <? if($searchFilters['priority']==(string)$k):?>selected="selected" <? endif; ?>value="<?=$k;?>"><?=$v;?></option>
-					<? endforeach; ?>
+					<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
+						<option <?php if($searchFilters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+					<?php endforeach; ?>
 				</select>
 			</th>
 
@@ -181,9 +181,9 @@
 					<option value="">Any</option>
 					<option <?php if($searchFilters['status']=='not-completed'):?>selected="selected" <?php endif;?>value="not-completed">Not Completed</option>
 					<option <?php if($searchFilters['status']=='not-accepted'):?>selected="selected" <?php endif;?>value="not-accepted">Not Accepted</option>
-					<? foreach(SdTaskTable::$statusArr as $k => $v): ?>
-						<option <? if($searchFilters['status']==(string)$k):?>selected="selected" <? endif; ?>value="<?=$k;?>"><?=$v;?></option>
-					<? endforeach; ?>
+					<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
+						<option <?php if($searchFilters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+					<?php endforeach; ?>
 				</select>
 			</th>
 

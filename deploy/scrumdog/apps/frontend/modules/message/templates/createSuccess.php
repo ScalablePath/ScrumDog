@@ -1,11 +1,11 @@
 <?php slot('page_title') ?>Create Message<?php end_slot() ?>
-<?php slot('project_title') ?><? echo($project->getName()); ?><?php end_slot() ?>
+<?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 <h1>Create Message</h1>
 <div class="box form">
 <p class="required">Fields marked with * are required.</p>
-<form action="<? echo url_for('@project_message_create?project_id='.$project->getId()) ?>" method="POST" enctype="multipart/form-data">
-    <? echo($form); ?>
+<form action="<?php echo url_for('@project_message_create?project_id='.$project->getId()) ?>" method="POST" enctype="multipart/form-data">
+    <?php echo($form); ?>
     
     <div class="item">
 		<label for="task_file">Files</label>

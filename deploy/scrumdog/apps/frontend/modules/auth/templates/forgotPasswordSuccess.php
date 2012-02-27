@@ -4,8 +4,8 @@
 	<div class="box form">
 	<h2>Forgot your login info? No worries.</h2>
 	<p>Fill out this form with your username or your email address (whichever you can remember) and we'll email your login info to you.</p>
-	<form action="<? echo url_for('@user_password') ?>" method="POST">
-		<? echo($form); ?>
+	<form action="<?php echo url_for('@user_password') ?>" method="POST">
+		<?php echo($form); ?>
 		<div class="item">
 			<div class="field">
 				<input type="submit" value="Submit"/>

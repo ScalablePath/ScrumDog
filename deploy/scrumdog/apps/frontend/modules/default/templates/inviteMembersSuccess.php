@@ -3,8 +3,8 @@
 <div id="main">
 	<h1>Invite people to join ScrumDog.</h1>
 	<div class="box form">
-	<form action="<? echo url_for('@member_invitemembers') ?>" method="POST">
-		<? echo($form); ?>
+	<form action="<?php echo url_for('@member_invitemembers') ?>" method="POST">
+		<?php echo($form); ?>
 		<div class="item">
 			<div class="field">
 				<input type="submit" value="Invite"/>

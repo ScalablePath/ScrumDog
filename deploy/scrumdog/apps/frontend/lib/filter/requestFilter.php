@@ -1,4 +1,4 @@
-<?
+<?php
 class requestFilter extends sfFilter
 {
   public function execute ($filterChain)
