@@ -1,7 +1,7 @@
 all:
   .settings:
-    support_email: support@scrumdog.com
-    info_email: info@scrumdog.com
+    support_email: info@scalablepath.com
+    info_email: info@scalablepath.com
     server_timezone: EST
     reminder_hour: 7 #allowed values are 0-23
     permitted_email_domains: [scrumdog.com, fluide.com]
