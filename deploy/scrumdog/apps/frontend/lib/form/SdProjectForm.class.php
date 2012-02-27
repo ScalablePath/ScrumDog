@@ -12,7 +12,7 @@ class SdProjectForm extends BaseSdProjectForm
   public function configure()
   {
     $this->setWidgets(array(
-      'name'        => new sfWidgetFormInput(array(), array('class' => 'text')),
+      'name'        => new sfWidgetFormInputText(array(), array('class' => 'text')),
     ));
 
     //labels

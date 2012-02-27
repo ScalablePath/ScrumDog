@@ -15,7 +15,7 @@ class SdMessageForm extends BaseSdMessageForm
 	//$sprint_id = sfContext::getInstance()->getRequest()->getParameter('sprint_id');
     $this->setWidgets(array(
     	'project_id'   => new sfWidgetFormInputHidden(),
-		'title'        => new sfWidgetFormInput(array(), array('class' => 'text large')),
+		'title'        => new sfWidgetFormInputText(array(), array('class' => 'text large')),
 		'content' => new sfWidgetFormTextarea(array(), array('class' => 'large')),	
     ));
 

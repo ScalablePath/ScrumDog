@@ -2,7 +2,7 @@
 /**
  * SdInviteMemberForm form.
  */
-class SdInviteMemberForm extends sfForm
+class SdInviteMemberForm extends BaseForm
 {
   public function configure()
   {

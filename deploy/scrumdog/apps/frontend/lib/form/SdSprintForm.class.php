@@ -12,11 +12,11 @@ class SdSprintForm extends BaseSdSprintForm
   public function configure()
   {
     $this->setWidgets(array(
-	  'name'        => new sfWidgetFormInput(array(), array('class' => 'text')),
+	  'name'        => new sfWidgetFormInputText(array(), array('class' => 'text')),
       //'description' => new sfWidgetFormTextarea(array(), array('class' => 'large')),
-		'start_date' => new sfWidgetFormInput(array(), array('class' => 'text date')),
-		'end_date' => new sfWidgetFormInput(array(), array('class' => 'text date')),
-		//'scrum_start_time' => new sfWidgetFormInput(array(), array('class' => 'text time')),
+		'start_date' => new sfWidgetFormInputText(array(), array('class' => 'text date')),
+		'end_date' => new sfWidgetFormInputText(array(), array('class' => 'text date')),
+		//'scrum_start_time' => new sfWidgetFormInputText(array(), array('class' => 'text time')),
 		//'scrum_time_zone_name' => new sfWidgetFormSelect(array('choices' => SdUserTable::getTimeZoneArray())),
 		'scrum_days' => new sfWidgetFormSelectCheckbox(array('choices' => SdSprintTable::$scrumDaysArr)),
     ));

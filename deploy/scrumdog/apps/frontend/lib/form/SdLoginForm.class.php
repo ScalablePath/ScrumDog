@@ -2,12 +2,12 @@
 /**
  * SdLoginForm form.
  */
-class SdLoginForm extends sfForm
+class SdLoginForm extends BaseForm
 {
   public function configure()
   {
 	$this->setWidgets(array(
-      'username' => new sfWidgetFormInput(array(), array('class' => 'text')),
+      'username' => new sfWidgetFormInputText(array(), array('class' => 'text')),
       'password' => new sfWidgetFormInputPassword(array(), array('class' => 'text')),
 		'remember' => new sfWidgetFormInputCheckbox(),
     ));

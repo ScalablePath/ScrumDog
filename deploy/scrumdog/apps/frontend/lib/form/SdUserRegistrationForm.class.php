@@ -7,10 +7,10 @@ class SdUserRegistrationForm extends BaseSdUserForm
   public function configure()
   {
     $this->setWidgets(array(
-      'username'  => new sfWidgetFormInput(array(), array('class' => 'text')),
+      'username'  => new sfWidgetFormInputText(array(), array('class' => 'text')),
       'password'  => new sfWidgetFormInputPassword(array(), array('class' => 'text')),
-      'email'     => new sfWidgetFormInput(array(), array('class' => 'text')),
-      'full_name' => new sfWidgetFormInput(array(), array('class' => 'text')),
+      'email'     => new sfWidgetFormInputText(array(), array('class' => 'text')),
+      'full_name' => new sfWidgetFormInputText(array(), array('class' => 'text')),
 	  'terms' => new sfWidgetFormInputCheckbox(),
     ));
 

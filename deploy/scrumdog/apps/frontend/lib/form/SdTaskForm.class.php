@@ -15,11 +15,11 @@ class SdTaskForm extends BaseSdTaskForm
         $sprint_id = sfContext::getInstance()->getRequest()->getParameter('sprint_id');
         $parentTasks = $this->getParentTasks($project_id, $sprint_id);
         $this->setWidgets(array(
-            'name'        => new sfWidgetFormInput(array(), array('class' => 'text large')),
+            'name'        => new sfWidgetFormInputText(array(), array('class' => 'text large')),
             'description' => new sfWidgetFormTextarea(array(), array('class' => 'large')),
             'business_value' => new sfWidgetFormSelect(array('choices' => SdTaskTable::$businessValueArr)),
             'priority' => new sfWidgetFormSelect(array('choices' => SdTaskTable::$priorityArr)),
-            'estimated_hours' => new sfWidgetFormInput(array(), array('class' => 'text numeric')),
+            'estimated_hours' => new sfWidgetFormInputText(array(), array('class' => 'text numeric')),
             'parent_id' => new sfWidgetFormSelect(array('choices' => $parentTasks)),
             'user_id' => new sfWidgetFormSelect(array('choices' => SdProjectTable::getProjectUserArray($project_id, NULL, array('unassigned' => true)))),
             'sprint_id' => new sfWidgetFormSelect(array('choices' => SdProjectTable::getSprintArray($project_id))),

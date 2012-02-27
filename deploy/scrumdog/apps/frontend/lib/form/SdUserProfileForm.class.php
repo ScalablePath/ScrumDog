@@ -7,14 +7,14 @@ class SdUserProfileForm extends BaseSdUserForm
   public function configure()
   {
     $this->setWidgets(array(
-      'full_name' => new sfWidgetFormInput(array(), array('class' => 'text')),
+      'full_name' => new sfWidgetFormInputText(array(), array('class' => 'text')),
 		'time_zone' => new sfWidgetFormSelect(array('choices' => SdUserTable::getTimeZoneArray())),
 		'gender' => new sfWidgetFormSelect(array('choices' => array('' => '(select)', 'male' => 'male', 'female' => 'female'))),
-      //'email'     => new sfWidgetFormInput(array(), array('class' => 'text')),
-      'phone'     => new sfWidgetFormInput(array(), array('class' => 'text')),
-      'city'     => new sfWidgetFormInput(array(), array('class' => 'text')),
-      'state'     => new sfWidgetFormInput(array(), array('class' => 'text')),
-      'country'     => new sfWidgetFormInput(array(), array('class' => 'text')),
+      //'email'     => new sfWidgetFormInputText(array(), array('class' => 'text')),
+      'phone'     => new sfWidgetFormInputText(array(), array('class' => 'text')),
+      'city'     => new sfWidgetFormInputText(array(), array('class' => 'text')),
+      'state'     => new sfWidgetFormInputText(array(), array('class' => 'text')),
+      'country'     => new sfWidgetFormInputText(array(), array('class' => 'text')),
       'profile_image' => new sfWidgetFormInputFile(),
     ));
 

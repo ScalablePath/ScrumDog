@@ -2,12 +2,12 @@
 /**
  * SdProjectInviteMemberForm form.
  */
-class SdProjectInviteMemberForm extends sfForm
+class SdProjectInviteMemberForm extends BaseForm
 {
   public function configure()
   {
     $this->setWidgets(array(
-      'emails'  => new sfWidgetFormInput(array(), array('class' => 'text')),
+      'emails'  => new sfWidgetFormInputText(array(), array('class' => 'text')),
       'project_id' => new sfWidgetFormInputHidden(),
       'current_route' => new sfWidgetFormInputHidden(),
     ));

@@ -11,5 +11,6 @@ request:
   class: requestFilter
 
 cache:     ~
-common:    ~
+common:
+  class: sfCommonFilter
 execution: ~

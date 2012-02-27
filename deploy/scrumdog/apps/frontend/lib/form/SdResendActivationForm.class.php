@@ -7,7 +7,7 @@ class SdResendActivationForm extends BaseSdUserForm
   public function configure()
   {
 	$this->setWidgets(array(
-      'username' => new sfWidgetFormInput(array(), array('class' => 'text')),
+      'username' => new sfWidgetFormInputText(array(), array('class' => 'text')),
     ));
 
     //labels

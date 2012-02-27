@@ -9,7 +9,7 @@ class SdForgotPasswordForm extends BaseSdUserForm
   public function configure()
   {
 	$this->setWidgets(array(
-      'username' => new sfWidgetFormInput(),
+      'username' => new sfWidgetFormInputText(),
     ));
 
     //labels
