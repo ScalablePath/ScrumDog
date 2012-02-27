@@ -33,7 +33,7 @@ class SdQuestionTable extends Doctrine_Table
 			$filterCount=0;
 			foreach($filters as $fieldName => $fieldValue)
 			{
-				if(trim($fieldValue)!='')
+				if(trim((string)$fieldValue)!='')
 				{
 					if($filterCount==0)
 					{
