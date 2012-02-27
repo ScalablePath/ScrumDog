@@ -201,12 +201,12 @@ SdUser:
     Projects: {class: SdProject, foreignAlias: Users, refClass: SdProjectUser, local: user_id, foreign: project_id}
     ProfileImage: {class: SdFile, local: profile_image, foreign: id, type: one, foreignType: one, foreignAlias: User}
 
-SdSession:
-  tableName: sd_session
-  columns:
-    id:                   { type: string(255), primary: true }
-    time:                 { type: integer(4), unsigned: 1, notnull: true }
-    data:                 { type: string(2147483647) }
+#SdSession:
+#  tableName: sd_session
+#  columns:
+#    id:                   { type: string(255), primary: true }
+#    time:                 { type: integer(4), unsigned: 1, notnull: true }
+#    data:                 { type: string(2147483647) }
 
 SdMessage:
   actAs: { Timestampable: ~ }
