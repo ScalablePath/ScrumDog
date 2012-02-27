@@ -5,7 +5,7 @@
 	<span id="create-task-button" class="button floatright">Create Task</span>
 	<h2>Sprint Backlog</h2>
 	<form autocomplete="off" onSubmit="return false">
-	<table id="project_backlog_table-<?=$sprint_id?>" class="backlog_table">
+	<table id="project_backlog_table-<?php echo $sprint_id?>" class="backlog_table">
 		<thead>
 		  <tr>
 			<th class="sortable<?php if(isset($sort['name'])) echo(' '.$sort['name']); ?>">
@@ -18,7 +18,7 @@
 					<option value="">Anyone</option>
 					<option <?php if($filters['user_id']=='null'):?>selected="selected" <?php endif;?>value="null">-unassigned-</option>
 					<?php foreach($projectUserArray as $k => $v):	?>
-						<option <?php if($filters['user_id']==(string)$k):?>selected="selected" <?php endif;?>value="<?=$k;?>"><?=$v;?></option>
+						<option <?php if($filters['user_id']==(string)$k):?>selected="selected" <?php endif;?>value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>
@@ -27,7 +27,7 @@
 				<select id="filter-pri" name="filter[priority]" autocomplete="off">
 					<option value="">Any</option>
 					<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-						<option <?php if($filters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+						<option <?php if($filters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>
@@ -38,7 +38,7 @@
 					<option <?php if($filters['status']=='not-completed'):?>selected="selected" <?php endif; ?>value="not-completed">Not Completed</option>
 					<option <?php if($filters['status']=='not-accepted'):?>selected="selected" <?php endif; ?>value="not-accepted">Not Accepted</option>
 					<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
-						<option <?php if($filters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+						<option <?php if($filters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>
@@ -47,7 +47,7 @@
 				<select id="filter-eh" name="filter[estimated_hours]" autocomplete="off">
 					<option value="">Any</option>
 					<?php foreach(SdTaskTable::$hoursRangeArr as $k => $v):	?>
-						<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?=$v;?>"><?=$v;?></option>
+						<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?php echo $v;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>
@@ -68,7 +68,7 @@
 				<option value="">Project Backlog</option>
 				<?php foreach($activeSprints as $mySprint): ?>
 					<?php if($sprint->getId()!=$mySprint->getId()): ?>
-					<option value="<?=$mySprint->getId()?>"<?php if($mySprint->current==1): ?> selected="selected"<?php endif; ?>><?=$mySprint->getName()?></option>
+					<option value="<?php echo $mySprint->getId()?>"<?php if($mySprint->current==1): ?> selected="selected"<?php endif; ?>><?php echo $mySprint->getName()?></option>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</select>

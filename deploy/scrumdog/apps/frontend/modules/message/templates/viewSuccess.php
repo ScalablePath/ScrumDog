@@ -1,4 +1,4 @@
-<?php slot('page_title') ?>Message : <?=$message->getTitle()?><?php end_slot() ?>
+<?php slot('page_title') ?>Message : <?php echo $message->getTitle()?><?php end_slot() ?>
 <?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 <div class="box message-detail">
@@ -16,7 +16,7 @@
 			<h1 id="title-header"><?php echo($message->getTitle()); ?></h1>
 		</div>
 		<div class="field hide">
-			<input autocomplete="off" id="title_input" name="message[title]" class="text" style="width: 100%;" value="<?=$message->getTitle()?>" />
+			<input autocomplete="off" id="title_input" name="message[title]" class="text" style="width: 100%;" value="<?php echo $message->getTitle()?>" />
 		</div>
 	</div>
 	<p class="metadata">Created on <?php echo(date("D M, j \a\\t g:i a", strtotime($message->created_at)).' '.sfConfig::get('app_server_timezone')); ?> by <a href="<?php echo(url_for('@member_profile?username='.$message->User->getUsername())); ?>"><?php echo($message->User->getFullName()); ?></a></p>
@@ -25,7 +25,7 @@
 			<p id="content_paragraph"><?php echo(nl2br($message->getContent())); ?></p>
 		</div>
 		<div class="field hide">
-			<textarea autocomplete="off" id="content_textarea" class="full" name="message[content]"><?=$message->getContent()?></textarea>
+			<textarea autocomplete="off" id="content_textarea" class="full" name="message[content]"><?php echo $message->getContent()?></textarea>
 		</div>
 	</div>
 </form>

@@ -1,4 +1,4 @@
-<?php slot('page_title') ?>Task : <?=$task->getName()?><?php end_slot() ?>
+<?php slot('page_title') ?>Task : <?php echo $task->getName()?><?php end_slot() ?>
 <?php slot('project_title') ?><?php echo($project->getName()); ?><?php end_slot() ?>
 <div id="main">
 <div class="box task-detail">
@@ -14,7 +14,7 @@
 			<h1 id="name-header"><?php echo($task->getName()); ?></h1>
 		</div>
 		<div class="field hide pri-task">
-			<input autocomplete="off" id="name_input" name="task[name]" class="text" style="width: 100%;" value="<?=$task->getName()?>" />
+			<input autocomplete="off" id="name_input" name="task[name]" class="text" style="width: 100%;" value="<?php echo $task->getName()?>" />
 		</div>
 	</div>
 
@@ -24,7 +24,7 @@
 			<p id="description_paragraph"><?php echo(nl2br($task->getDescription())); ?></p>
 		</div>
 		<div class="field hide pri-task">
-			<textarea autocomplete="off" id="description_textarea" class="full" name="task[description]"><?=$task->getDescription()?></textarea>
+			<textarea autocomplete="off" id="description_textarea" class="full" name="task[description]"><?php echo $task->getDescription()?></textarea>
 		</div>
 	</div>
 	<h2>Metadata</h2>
@@ -32,12 +32,12 @@
 		<div class="item">
 			<label for="bv_select">Business Value</label>
 			<div class="display">
-				<p id="bv_paragraph"><?=$task->getBusinessValueText()?></p>
+				<p id="bv_paragraph"><?php echo $task->getBusinessValueText()?></p>
 			</div>
 			<div class="field hide pri-task">
 				<select id="bv_select" name="task[business_value]">
 				<?php foreach(SdTaskTable::$businessValueArr as $k => $v): ?>
-					<option <?php if($task->getBusinessValue()==$k):?> selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+					<option <?php if($task->getBusinessValue()==$k):?> selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 				<?php endforeach; ?>
 				</select>
 			</div>
@@ -45,12 +45,12 @@
 		<div class="item">
 			<label for="pri_select">Priority</label>
 			<div class="display">
-				<p id="pri_paragraph"><?=$task->getPriorityText()?></p>
+				<p id="pri_paragraph"><?php echo $task->getPriorityText()?></p>
 			</div>
 			<div class="field hide pri-task">
 				<select id="pri_select" name="task[priority]">
 				<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-					<option <?php if($task->getPriority()==$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+					<option <?php if($task->getPriority()==$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 				<?php endforeach; ?>
 				</select>
 			</div>
@@ -58,10 +58,10 @@
 		<div class="item">
 			<label for="eh_input">Estimated Hours</label>
 			<div class="display">
-				<p id="eh_paragraph"><?=nl2br($task->getEstimatedHours())?></p>
+				<p id="eh_paragraph"><?php echo nl2br($task->getEstimatedHours())?></p>
 			</div>
 			<div class="field hide pri-task">
-				<input autocomplete="off" id="eh_input" name="task[estimated_hours]" class="numeric text" style="width: 35px;" value="<?=$task->getEstimatedHours()?>" />
+				<input autocomplete="off" id="eh_input" name="task[estimated_hours]" class="numeric text" style="width: 35px;" value="<?php echo $task->getEstimatedHours()?>" />
 			</div>
 		</div>
 		<div class="item">
@@ -79,7 +79,7 @@
 				<select id="user_select" name="task[user_id]">
 					<option value="">-unassigned-</option>
 				<?php foreach($projectUsers as $k => $v): ?>
-					<option <?php if($task->getUserId()==$k):?>selected="selected" <?php endif; ?>value="<?=$k?>"><?=$v->getFullName()?></option>
+					<option <?php if($task->getUserId()==$k):?>selected="selected" <?php endif; ?>value="<?php echo $k?>"><?php echo $v->getFullName()?></option>
 				<?php endforeach; ?>
 				</select>
 			</div>
@@ -87,12 +87,12 @@
 		<div class="item">
 			<label for="status_select">Status</label>
 			<div class="display">
-				<p id="status_paragraph"><?=$task->getStatusText()?></p>
+				<p id="status_paragraph"><?php echo $task->getStatusText()?></p>
 			</div>
 			<div class="field hide pri-task">
 				<select id="status_select" name="task[status]">
 				<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
-					<option <?php if($task->getStatus()==$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+					<option <?php if($task->getStatus()==$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 				<?php endforeach; ?>
 				</select>
 			</div>
@@ -186,7 +186,7 @@
 				<?php endif; ?>
 				<?php foreach($activeSprints as $mySprint): ?>
 					<?php if($task->getSprintId()!=$mySprint->getId()): ?>
-					<option value="<?=$mySprint->getId()?>"><?=$mySprint->getName()?></option>
+					<option value="<?php echo $mySprint->getId()?>"><?php echo $mySprint->getName()?></option>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</select>

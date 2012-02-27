@@ -4,7 +4,7 @@
 	<div class="box">
 	<h1>Archived Tasks</h1>
 	<form autocomplete="off" onSubmit="return false">
-	<table id="project_backlog_table-<?=$project_id?>" class="backlog_table">
+	<table id="project_backlog_table-<?php echo $project_id?>" class="backlog_table">
 		<thead>
 		  <tr>
 			<th class="sortable<?php if(isset($sort['name'])) echo(' '.$sort['name']); ?>">
@@ -16,7 +16,7 @@
 			<select id="filter-bv" name="filter[business_value]" autocomplete="off">
 					<option value="">any</option>
 					<?php foreach(SdTaskTable::$businessValueArr as $k => $v):	?>
-						<option <?php if($filters['business_value']==(string)$k):?>selected="selected" <?php endif;?>value="<?=$k;?>"><?=$v;?></option>
+						<option <?php if($filters['business_value']==(string)$k):?>selected="selected" <?php endif;?>value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>
@@ -25,7 +25,7 @@
 				<select id="filter-eh" name="filter[estimated_hours]" autocomplete="off">
 					<option value="">any</option>
 					<?php foreach(SdTaskTable::$hoursRangeArr as $k => $v):	?>
-						<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?=$v;?>"><?=$v;?></option>
+						<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?php echo $v;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 				</th>
@@ -45,7 +45,7 @@
 			<select id="assign_select">
 				<option value="">Project Backlog</option>
 				<?php foreach($activeSprints as $sprint): ?>
-					<option value="<?=$sprint->getId()?>"<?php if($sprint->current==1): ?> selected="selected"<?php endif; ?>><?=$sprint->getName()?></option>
+					<option value="<?php echo $sprint->getId()?>"<?php if($sprint->current==1): ?> selected="selected"<?php endif; ?>><?php echo $sprint->getName()?></option>
 				<?php endforeach; ?>
 			</select>
 		</form>

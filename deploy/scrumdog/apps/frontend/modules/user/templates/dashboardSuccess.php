@@ -24,7 +24,7 @@
 						<select id="filter-pri" name="filter[priority]" autocomplete="off">
 							<option value="">Any</option>
 							<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-								<option <?php if($filters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+								<option <?php if($filters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 							<?php endforeach; ?>
 						</select>
 					</th>
@@ -35,7 +35,7 @@
 							<option <?php if($filters['status']=='not-completed'):?>selected="selected" <?php endif; ?>value="not-completed">Not Completed</option>
 							<option <?php if($filters['status']=='not-accepted'):?>selected="selected" <?php endif; ?>value="not-accepted">Not Accepted</option>
 							<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
-								<option <?php if($filters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+								<option <?php if($filters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 							<?php endforeach; ?>
 						</select>
 					</th>
@@ -44,7 +44,7 @@
 						<select id="filter-eh" name="filter[estimated_hours]" autocomplete="off">
 							<option value="">Any</option>
 							<?php foreach(SdTaskTable::$hoursRangeArr as $k => $v):	?>
-								<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?=$v;?>"><?=$v;?></option>
+								<option <?php if($filters['estimated_hours']==(string)$v):?>selected="selected" <?php endif;?>value="<?php echo $v;?>"><?php echo $v;?></option>
 							<?php endforeach; ?>
 						</select>
 					</th>

@@ -14,7 +14,7 @@
             <div class="item">
 				<div class="field">
 					<?php if($renderRedirectInput): ?>
-						<input type="hidden" name="redirect" value="<?=$redirectUrl?>"/>
+						<input type="hidden" name="redirect" value="<?php echo $redirectUrl?>"/>
 					<?php endif; ?>
 					<input type="submit" value="Login"/>
 				</div>

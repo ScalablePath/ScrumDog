@@ -1,2 +1,2 @@
 <?php decorate_with(false) ?>
-<?=$output?>
+<?php echo $output?>

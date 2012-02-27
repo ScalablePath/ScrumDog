@@ -8,7 +8,7 @@
 	  <?php echo($form); ?>
 		<div class="item">
 			<div class="field">
-				<input type="hidden" name="redirect" value="<?=$redirectUrl?>"/>
+				<input type="hidden" name="redirect" value="<?php echo $redirectUrl?>"/>
 				<input type="submit" value="Update"/>
 			</div>
 		</div>

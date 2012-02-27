@@ -5,7 +5,7 @@
 	<div class="box">
 	<h2>Sprints</h2>
 		<form action="<?php echo url_for('@project_manage?project_id='.$project->getId()) ?>" method="POST">
-			<table id="sprint_table-<?=$project_id?>" class="sprint_table">
+			<table id="sprint_table-<?php echo $project_id?>" class="sprint_table">
 				<thead>
 				  <tr><th>Name</th><th>Active</th><th>Current</th>
 				</thead>

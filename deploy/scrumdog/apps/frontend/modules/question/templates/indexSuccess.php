@@ -160,7 +160,7 @@
 					<option value="">Anyone</option>
 					<option <?php if($searchFilters['user_id']=='null'):?>selected="selected" <?php endif;?>value="null">-unassigned-</option>
 					<?php foreach($projectUserArray as $k => $v):	?>
-						<option <?php if($searchFilters['user_id']==(string)$k):?>selected="selected" <?php endif;?>value="<?=$k;?>"><?=$v;?></option>
+						<option <?php if($searchFilters['user_id']==(string)$k):?>selected="selected" <?php endif;?>value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>
@@ -170,7 +170,7 @@
 				<select id="filter-pri" name="filter[priority]" autocomplete="off">
 					<option value="">Any</option>
 					<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-						<option <?php if($searchFilters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+						<option <?php if($searchFilters['priority']==(string)$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>
@@ -182,7 +182,7 @@
 					<option <?php if($searchFilters['status']=='not-completed'):?>selected="selected" <?php endif;?>value="not-completed">Not Completed</option>
 					<option <?php if($searchFilters['status']=='not-accepted'):?>selected="selected" <?php endif;?>value="not-accepted">Not Accepted</option>
 					<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
-						<option <?php if($searchFilters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?=$k;?>"><?=$v;?></option>
+						<option <?php if($searchFilters['status']==(string)$k):?>selected="selected" <?php endif; ?>value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</th>

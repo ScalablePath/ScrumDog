@@ -34,7 +34,7 @@
 				<div class="field">
 					<select id="pop-business_value" name="task[business_value]" autocomplete="off">
 					<?php foreach(SdTaskTable::$businessValueArr as $k => $v): ?>
-						<option<?php if($v=='Normal'): ?> selected="selected"<?php endif; ?> value="<?=$k?>"><?=$v?></option>
+						<option<?php if($v=='Normal'): ?> selected="selected"<?php endif; ?> value="<?php echo $k?>"><?php echo $v?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
@@ -48,7 +48,7 @@
 					<select id="pop-user_id" name="task[user_id]" autocomplete="off">
 					<option value="">-unassigned-</option>
 					<?php foreach($projectUserArray as $k => $v): ?>
-						<option value="<?=$k?>"><?=$v?></option>
+						<option value="<?php echo $k?>"><?php echo $v?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
@@ -59,7 +59,7 @@
 				<div class="field">
 					<select id="pop-status" name="task[status]" autocomplete="off">
 					<?php foreach(SdTaskTable::$statusArr as $k => $v): ?>
-						<option value="<?=$k;?>"><?=$v;?></option>
+						<option value="<?php echo $k;?>"><?php echo $v;?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
@@ -70,7 +70,7 @@
 				<div class="field">
 					<select id="pop-priority" name="task[priority]" autocomplete="off">
 					<?php foreach(SdTaskTable::$priorityArr as $k => $v): ?>
-						<option<?php if($v=='Normal'): ?> selected="selected"<?php endif; ?> value="<?=$k?>"><?=$v?></option>
+						<option<?php if($v=='Normal'): ?> selected="selected"<?php endif; ?> value="<?php echo $k?>"><?php echo $v?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
