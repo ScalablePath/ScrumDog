@@ -12,6 +12,7 @@ class ProjectConfiguration extends sfProjectConfiguration
 	$this->enablePlugins(array('sfThumbnailPlugin'));
 	
   }
+/*
   static protected $zendLoaded = false;
  
   static public function registerZend()
@@ -34,4 +35,5 @@ class ProjectConfiguration extends sfProjectConfiguration
     require_once dirname(__FILE__).'/../lib/vendor/Fluide/Loader.php';
     spl_autoload_register(array('Fluide_Loader', 'loadClass'));
   }
+*/
 }

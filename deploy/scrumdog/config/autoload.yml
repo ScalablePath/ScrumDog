@@ -1,0 +1,13 @@
+autoload:
+  vendor_fluide:
+    path:      %SF_LIB_DIR%/vendor/Fluide
+    recursive: on
+  vendor_jsmin:
+    path:      %SF_LIB_DIR%/vendor/JSMin
+    recursive: on
+  vendor_Minify:
+    path:      %SF_LIB_DIR%/vendor/Minify
+    recursive: on
+  vendor_zend:
+    path:      %SF_LIB_DIR%/vendor/Zend
+    recursive: on
