@@ -40,7 +40,7 @@ class projectActions extends sfActions
           
           //$this->getUser()->getProjectRoleArray();
           
-		  sfLoader::loadHelpers(array('Url'));
+		  $this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 		  
           $this->getUser()->setFlash('success', 'Your project has been created! Now you can <a href="'.url_for('@project_members?project_id='.$projectObject->getId()).'">add members</a>, <a href="'.url_for('@project_createsprint?project_id='.$projectObject->getId()).'">create a sprint</a>, or <a href="'.url_for('@project_createtask?project_id='.$projectObject->getId()).'">create a task</a>.');
           
@@ -210,7 +210,7 @@ class projectActions extends sfActions
 							}
 			  
 							// Send to user an activation email with the confirmation link
-							sfLoader::loadHelpers(array('Url'));
+							$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 							$confirmationLink = url_for('@project_confirmuser?project_id='.$this->project->getId().'&key='.$invitation->getHash(), true);
 			  				
 							ProjectConfiguration::registerZend();
@@ -340,7 +340,7 @@ class projectActions extends sfActions
 			$owner = $project->getOwner();
 	
 			// Send registrant an email
-			sfLoader::loadHelpers(array('Url'));
+			$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 			$confirmationLink = url_for('@project_members?project_id='.$project_id, true);
 			
 			ProjectConfiguration::registerZend();
@@ -506,7 +506,7 @@ class projectActions extends sfActions
 				$owner = $this->project->getOwner();
 	
 				// Send user an  email to the project's owner
-				sfLoader::loadHelpers(array('Url'));
+				$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 				$confirmationLink = url_for('@project_members?project_id='.$projectId, true);
 			
 				ProjectConfiguration::registerZend();
@@ -551,7 +551,7 @@ class projectActions extends sfActions
 			$this->registrant = Doctrine::getTable('SdUser')->find ( $invitation->getInviteeUserId() );
 	
 			// Send registrant an email to confirmation.
-			sfLoader::loadHelpers(array('Url'));
+			$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 			$confirmationLink = url_for('@project_dashboard?project_id='.$project_id, true);
 			
 			ProjectConfiguration::registerZend();

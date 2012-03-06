@@ -168,7 +168,7 @@ class userActions extends sfActions
 			$this->form->bind($user);
 			if ($this->form->isValid())
 			{
-				sfLoader::loadHelpers('Url');
+				$this->getContext()->getConfiguration()->loadHelpers('Url');
 
 				$sdUser = new SdUser();
 				$sdUser->setUsername($user['username']);
@@ -306,7 +306,7 @@ class userActions extends sfActions
 
 	private function sendActivationEmail($sdUser, $confirmation)
 	{
-		sfLoader::loadHelpers('Url');
+		$this->getContext()->getConfiguration()->loadHelpers('Url');
         $activationLink = url_for('@user_activate?key='.$confirmation->getHash(), true);
 
         ProjectConfiguration::registerZend();

@@ -318,7 +318,7 @@ class taskActions extends sfActions {
 			if ($taskObject->getUser ()->getId () != $this->getUser ()->getId () && is_int ( $taskObject->getUser ()->getId () )) {
 				ProjectConfiguration::registerZend ();
 				$mail = new Zend_Mail ( );
-				sfLoader::loadHelpers ( array ('Url' ) );
+				$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 				$emailLink = url_for ( '@project_task?task_id=' . $this->taskId, true );
 				
 				$mail->setSubject ( "{$this->project->getName()} - New Comment on {$taskObject->getName()}" );

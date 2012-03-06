@@ -100,7 +100,7 @@ class SdQuestion extends BaseSdQuestion
 		$user = Doctrine::getTable('SdUser')->find($this->getUserId());
 		ProjectConfiguration::registerZend();
 		$mail = new Zend_Mail();
-		sfLoader::loadHelpers(array('Url'));
+		$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 		$emailLink = url_for('@project_task?task_id='.$this->getId(), true);
 		
 		if($new)

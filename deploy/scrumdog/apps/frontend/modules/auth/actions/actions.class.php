@@ -9,7 +9,7 @@ class authActions extends sfActions
 {
 	public function executePreSignin($request)
 	{
-		sfLoader::loadHelpers(array('Url'));
+		$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 		$this->redirect(url_for('@user_signin?redirect='.urlencode($_SERVER['REQUEST_URI'])));
 	}
 
@@ -122,7 +122,7 @@ class authActions extends sfActions
 
 	private function getLoginRedirect($request)
 	{
-		sfLoader::loadHelpers(array('Url'));
+		$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 
 		$redirect = $request->getParameter('redirect');
 
@@ -146,7 +146,7 @@ class authActions extends sfActions
 	private function sendLoginInfo($sdUser)
 	{
 		// Send user an email with their login info
-		sfLoader::loadHelpers('Url');
+		$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
         $activationLink = url_for('@user_signin', true);
 
         ProjectConfiguration::registerZend();

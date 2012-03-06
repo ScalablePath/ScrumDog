@@ -135,7 +135,7 @@ class defaultActions extends sfActions {
 	}
 	
 	private function sendInviteEmail($emailAddress, $invitation, $user) {
-		sfLoader::loadHelpers ( array ('Url' ) );
+		$this->getContext()->getConfiguration()->loadHelpers( array ('Url' ) );
 		
 		ProjectConfiguration::registerZend ();
 		$mail = new Zend_Mail ( );

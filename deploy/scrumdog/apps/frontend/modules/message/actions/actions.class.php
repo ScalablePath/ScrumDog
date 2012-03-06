@@ -282,7 +282,7 @@ EOF
 			{
 				ProjectConfiguration::registerZend();
 				$mail = new Zend_Mail();
-				sfLoader::loadHelpers(array('Url'));
+				$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 				$emailLink = url_for('@project_message_view?message_id='.$this->messageId, true);
 	
 				$mail->setSubject("{$this->project->getName()} - New Comment on {$messageObject->getTitle()}");

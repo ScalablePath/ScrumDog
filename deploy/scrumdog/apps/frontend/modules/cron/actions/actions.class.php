@@ -67,7 +67,7 @@ class cronActions extends sfActions
 		ProjectConfiguration::registerZend();
 		while($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-			sfLoader::loadHelpers(array('Url'));
+			$this->getContext()->getConfiguration()->loadHelpers(array('Url'));
 			$dateString = date('Y-m-d', $timeStamp_in_Target);
 			//$questionLink = url_for('@project_questions?project_id='.$row['project_id'].'&username='.$row['username'].'&date='.$dateString, true);
 
